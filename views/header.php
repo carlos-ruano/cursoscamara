@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +7,7 @@
     <title>Cursos Cámara de Comercio</title>
     <!-- <link rel="stylesheet" href="http://localhost/cursoscamara/content/styles/style.css"> -->
     <link rel="stylesheet" href="./content/styles/style.css">
+    <link rel="icon" href="./content/img/icon.jpg">
 
 </head>
 <body>
