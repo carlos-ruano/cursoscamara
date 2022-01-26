@@ -7,7 +7,6 @@
     if(isset($_GET["url"])){
         $url = $_GET["url"];
         $router = new Router($url);
-        $router->run();
     } else {
         $ctrl = new HomeController();
         $ctrl->index();

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-01-2022 a las 11:53:05
+-- Tiempo de generación: 26-01-2022 a las 09:59:58
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.12
 
@@ -40,16 +40,17 @@ CREATE TABLE `courses` (
   `description` text DEFAULT NULL,
   `web_link` varchar(255) DEFAULT NULL,
   `pdf_link` varchar(255) DEFAULT NULL,
-  `image_link` varchar(255) DEFAULT NULL
+  `image_link` varchar(255) DEFAULT NULL,
+  `status` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `courses`
 --
 
-INSERT INTO `courses` (`id`, `name`, `start_date`, `end_date`, `duration`, `place`, `schedule`, `contact_email`, `contact_telephone`, `description`, `web_link`, `pdf_link`, `image_link`) VALUES
-(1, 'CURSO DE VIGILANTE DE SEGURIDAD', '2021-12-01', '2021-12-30', 120, 'Cámara de Comercio de Toledo', 'De lunes a viernes, de 9:00 a 15:00 horas', 'esperanza@camaratoledo.com', '925285428', 'El objetivo de este curso es preparar vigilantes de seguridad para la obtención de la certificación acreditativa correspondiente, expedida en un centro de formación de personal de seguridad privada homologado por el Ministerio del Interior.', 'https://camaratoledo.com/programa-integral-de-cualificacion-y-empleo-pice/cursos-de-formacion-pice/vigilante-de-seguridad-en-toledo/', 'https://camaratoledo.com/wp-content/uploads/2021/11/vigilante-seguridad-toledo.pdf', NULL),
-(2, 'CURSO DE CAMARERA/O DE PISOS', NULL, NULL, 215, 'Cámara de Comercio de Toledo', 'De lunes a viernes, de 8:00 a 14:30 horas', NULL, '925822561', 'El objetivo de este curso es preparar vigilantes de seguridad para la obtención de la certificación acreditativa correspondiente, expedida en un centro de formación de personal de seguridad privada homologado por el Ministerio del Interior.', 'https://camaratoledo.com/programa-integral-de-cualificacion-y-empleo-pice/cursos-de-formacion-pice/curso-de-camarera-o-de-pisos-en-talavera/', 'https://camaratoledo.com/wp-content/uploads/2021/03/camarera-de-pisos-talavera-2021.pdf', NULL);
+INSERT INTO `courses` (`id`, `name`, `start_date`, `end_date`, `duration`, `place`, `schedule`, `contact_email`, `contact_telephone`, `description`, `web_link`, `pdf_link`, `image_link`, `status`) VALUES
+(1, 'CURSO DE VIGILANTE DE SEGURIDAD', '2021-12-01', '2021-12-30', 120, 'Cámara de Comercio de Toledo', 'De lunes a viernes, de 9:00 a 15:00 horas', 'esperanza@camaratoledo.com', '925285428', 'El objetivo de este curso es preparar vigilantes de seguridad para la obtención de la certificación acreditativa correspondiente, expedida en un centro de formación de personal de seguridad privada homologado por el Ministerio del Interior.', 'https://camaratoledo.com/programa-integral-de-cualificacion-y-empleo-pice/cursos-de-formacion-pice/vigilante-de-seguridad-en-toledo/', 'https://camaratoledo.com/wp-content/uploads/2021/11/vigilante-seguridad-toledo.pdf', NULL, 'finalizado'),
+(2, 'CURSO DE CAMARERA/O DE PISOS', NULL, NULL, 215, 'Cámara de Comercio de Toledo', 'De lunes a viernes, de 8:00 a 14:30 horas', NULL, '925822561', 'El objetivo de este curso es preparar vigilantes de seguridad para la obtención de la certificación acreditativa correspondiente, expedida en un centro de formación de personal de seguridad privada homologado por el Ministerio del Interior.', 'https://camaratoledo.com/programa-integral-de-cualificacion-y-empleo-pice/cursos-de-formacion-pice/curso-de-camarera-o-de-pisos-en-talavera/', 'https://camaratoledo.com/wp-content/uploads/2021/03/camarera-de-pisos-talavera-2021.pdf', NULL, 'proximamente');
 
 -- --------------------------------------------------------
 

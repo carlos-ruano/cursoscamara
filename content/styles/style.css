@@ -47,31 +47,57 @@
     transition: 0.5s;
 }
 
+/*-------------------------home_view---------------------------------*/
+
 .principal{
     width: 55%;
     height: 100%;
     background-color: rgba(255, 255, 255, 0.585);
 }
 
-.principal h1{
-    font-size: 5em;
-    padding-top: 50px;
-    padding-left: 50px;
+.titulo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 2em;
+    width: 100%;
+    height: 30%;
     opacity: 0.8;
     font-family: 'Ubuntu', sans-serif;
 }
 
-.principal h2{
-    font-size: 2em;
-    padding-top: 50px;
-    padding-left: 50px;
-    opacity: 0.8;
+.titulo h1{
+    padding: 15px;
 }
 
-.oferta{
+.titulo2{
+    font-size: 1.5em;
+    width: 100%;
+    height: 30%;
+    opacity: 0.8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.titulo2 h2{
+    padding: 30px;
+}
+
+.opcion{
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.ofertaCursos{
     width: 75%;
     height: 100px;
-    margin-top: 50px;
     background-color: rgb(199, 59, 59);
     opacity: 1.5;
     color: white;
@@ -81,18 +107,126 @@
     opacity: 0.9;
     animation-name: deslizar;
     animation-duration: 5s;
+    text-decoration: none;
 }
 
-.oferta h3{
+.ofertaCursos h3{
     font-size: 2em;
 }
 
-.oferta:hover{
+.ofertaCursos:hover{
     cursor: pointer;
     box-shadow: 5px 5px 15px black;
     transition: 0.5s;
 }
 
+/*---------------------------courses_view---------------------*/
+
+.generalContainer{
+    width: 100%;
+    height: calc(100vh - 75px);
+    background: url("../img/fondo2.jpg");
+    background-size:cover;
+    background-position: right;
+    animation-name: aparecer;
+    animation-duration: 1.5s;
+    display: flex;
+    justify-content: center;
+}
+
+.courseContainer{
+    width: 85%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow: auto;
+}
+
+.courseBox{
+    width: 270px;
+    height: 450px;
+    margin-top: 50px;
+    margin-right: 50px;
+    margin-bottom: 30px;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.courseBox:hover{
+    box-shadow: 5px 5px 15px rgb(0, 0, 0);
+    transition: 0.5s;
+}
+
+.courseBox .nombre{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: rgb(199, 59, 59);
+    color: white;
+}
+
+.courseBox .imagen{
+    width: 100%;
+    height: 40%;
+    background-color: darkkhaki;
+}
+
+.courseBox .imagen img{
+    width: 100%;
+    height: 100%;
+}
+
+.courseBox .dato{
+    width: 100%;
+    height: 10%;
+    background-color: rgba(42, 42, 42, 0.408);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.courseBox .contacto{
+    width: 100%;
+    height: 10%;
+    background-color: darkkhaki;
+    display: flex;
+}
+
+.courseBox .llamanos{
+    width: 50%;
+    background-color: rgb(142, 142, 142);
+    color: rgb(0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.courseBox .llamanos:hover{
+    cursor: pointer;
+    box-shadow: -2px -2px 5px rgb(255, 255, 255);
+    transition: 0.5s;
+}
+
+.courseBox .inscribete{
+    width: 50%;
+    background-color: rgb(226, 216, 70);
+    color: rgb(0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.courseBox .inscribete:hover{
+    cursor: pointer;
+    box-shadow: -2px -2px 5px rgb(255, 255, 255);
+    transition: 0.5s;
+}
 
 /*-----------------------------------KEYFRAMES------------------------------------------*/
 
@@ -111,7 +245,7 @@
 
     from{
         opacity:0;
-        margin-left: -300px;
+        margin-left: -500px;
     }
 
     to{
@@ -125,7 +259,7 @@
 
 @media (max-width: 1200px) {
     .principal h1{
-        font-size: 4em;
+        font-size: 2em;
     }
 
     .principal h2{
@@ -135,7 +269,7 @@
 
 @media (max-width: 800px) {
     .principal h1{
-        font-size: 3em;
+        font-size: 1.5em;
     }
 }
 
@@ -149,7 +283,7 @@
     }
 
     .principal h1{
-        font-size: 2em;
+        font-size: 1.5em;
         padding: 15px;
         margin-top: 30px;
     }
@@ -160,16 +294,12 @@
         margin-top: 50px;
     }
 
-    .oferta{
-        margin: 15px;
-    }
-
     .gestion{
         margin-right: 5px;
     }
 }
 
-@media (max-width: 650px) {
+@media (max-width: 500px) {
 
     .head{
         width: 100%;
@@ -190,5 +320,26 @@
         height: 40px;
         margin-bottom: 15px;
         font-size: 0.7em;
+    }
+
+    .opcion{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .courseBox{
+        width: 90%;
+        margin-right: 0px;
+        margin-top: 35px; 
+    }
+}
+
+@media (max-width: 350px){
+
+    .principal h1{
+        font-size: 1em;
+        padding: 15px;
+        margin-top: 30px;
     }
 }
