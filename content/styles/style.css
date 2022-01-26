@@ -53,25 +53,48 @@
     background-color: rgba(255, 255, 255, 0.585);
 }
 
-.principal h1{
-    font-size: 5em;
-    padding-top: 50px;
-    padding-left: 50px;
+.titulo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 2em;
+    width: 100%;
+    height: 30%;
     opacity: 0.8;
     font-family: 'Ubuntu', sans-serif;
 }
 
-.principal h2{
-    font-size: 2em;
-    padding-top: 50px;
-    padding-left: 50px;
+.titulo h1{
+    padding: 15px;
+}
+
+.titulo2{
+    font-size: 1.5em;
+    width: 100%;
+    height: 30%;
     opacity: 0.8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.titulo2 h2{
+    padding: 30px;
+}
+
+.opcion{
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .oferta{
     width: 75%;
     height: 100px;
-    margin-top: 50px;
     background-color: rgb(199, 59, 59);
     opacity: 1.5;
     color: white;
@@ -81,6 +104,7 @@
     opacity: 0.9;
     animation-name: deslizar;
     animation-duration: 5s;
+    text-decoration: none;
 }
 
 .oferta h3{
@@ -111,7 +135,7 @@
 
     from{
         opacity:0;
-        margin-left: -300px;
+        margin-left: -500px;
     }
 
     to{
@@ -125,7 +149,7 @@
 
 @media (max-width: 1200px) {
     .principal h1{
-        font-size: 4em;
+        font-size: 2em;
     }
 
     .principal h2{
@@ -135,7 +159,7 @@
 
 @media (max-width: 800px) {
     .principal h1{
-        font-size: 3em;
+        font-size: 1.5em;
     }
 }
 
@@ -149,7 +173,7 @@
     }
 
     .principal h1{
-        font-size: 2em;
+        font-size: 1.5em;
         padding: 15px;
         margin-top: 30px;
     }
@@ -158,10 +182,6 @@
         font-size: 1em;
         padding: 15px;
         margin-top: 50px;
-    }
-
-    .oferta{
-        margin: 15px;
     }
 
     .gestion{
@@ -190,5 +210,20 @@
         height: 40px;
         margin-bottom: 15px;
         font-size: 0.7em;
+    }
+
+    .opcion{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media (max-width: 350px){
+
+    .principal h1{
+        font-size: 1em;
+        padding: 15px;
+        margin-top: 30px;
     }
 }
