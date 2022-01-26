@@ -7,9 +7,9 @@
             <h2>OFERTAS DE CURSOS FORMATIVOS</h2>
         </div>
         <div class="opcion">
-            <div class="oferta">
+            <a href="" class="oferta">
                 <h3>VER CURSOS</h3>
-            </div>
+            </a>
         </div>
     </div>
 </div>
