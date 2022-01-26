@@ -7,7 +7,7 @@
             <h2>OFERTAS DE CURSOS FORMATIVOS</h2>
         </div>
         <div class="opcion">
-            <a href="" class="oferta">
+            <a href="<?php echo $this->urlCourses;?>" class="oferta">
                 <h3>VER CURSOS</h3>
             </a>
         </div>
