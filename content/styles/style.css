@@ -274,12 +274,34 @@
     width: 10%;
     height: 100%;
     background-color: rgba(199, 59, 59, 0.800);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+}
+
+.courseEditBox .delete:hover{
+    cursor: pointer;
+    box-shadow: 5px 5px 15px black;
+    transition: 0.5s;
 }
 
 .courseEditBox .edit{
     width: 10%;
     height: 100%;
     background-color: rgba(226, 216, 70, 0.800);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+}
+
+.courseEditBox .edit:hover{
+    cursor: pointer;
+    box-shadow: 5px 5px 15px black;
+    transition: 0.5s;
 }
 
 /*-----------------------------------KEYFRAMES------------------------------------------*/
