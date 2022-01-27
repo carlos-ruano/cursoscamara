@@ -1,5 +1,5 @@
 <div class="generalContainer">
-    <a href="<?= $this->urlEditCourses ?>" class="gestion">Gestión de cursos</a>
+    <a href="<?= $this->urlEditCourses ?>" class="login">Gestión de cursos</a>
     <div class="courseContainer">
         <?php foreach ($this->courses as $course) { ?>
         
