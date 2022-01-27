@@ -11,7 +11,7 @@
 <body>
     <nav class="head">
         <img src="./content/img/logo.jpg" alt="">
-        <div class="gestion">
-            <p>Gestión de cursos</p>
-        </div>
+        <a href="" class="gestion">
+            <p>Login</p>
+        </a>
     </nav>

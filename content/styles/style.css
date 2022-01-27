@@ -39,12 +39,25 @@
     align-items: center;
     color: white;
     text-align: center;
+    text-decoration: none;
 }
 
 .gestion:hover{
     cursor: pointer;
     box-shadow: 5px 5px 15px black;
     transition: 0.5s;
+}
+
+.generalContainer{
+    width: 100%;
+    height: calc(100vh - 75px);
+    background: url("../img/fondo2.jpg");
+    background-size:cover;
+    background-position: right;
+    animation-name: aparecer;
+    animation-duration: 1.5s;
+    display: flex;
+    justify-content: center;
 }
 
 /*-------------------------home_view---------------------------------*/
@@ -122,18 +135,6 @@
 
 /*---------------------------courses_view---------------------*/
 
-.generalContainer{
-    width: 100%;
-    height: calc(100vh - 75px);
-    background: url("../img/fondo2.jpg");
-    background-size:cover;
-    background-position: right;
-    animation-name: aparecer;
-    animation-duration: 1.5s;
-    display: flex;
-    justify-content: center;
-}
-
 .courseContainer{
     width: 85%;
     display: flex;
@@ -158,7 +159,7 @@
 
 .courseBox .nombre{
     width: 100%;
-    height: 20%;
+    height: 17%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -191,24 +192,25 @@
 
 .courseBox .contacto{
     width: 100%;
-    height: 10%;
+    height: 13%;
     background-color: darkkhaki;
     display: flex;
 }
 
 .courseBox .llamanos{
     width: 50%;
-    background-color: rgb(142, 142, 142);
+    background-color: rgb(167, 167, 167);
     color: rgb(0, 0, 0);
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
+    text-decoration: none;
 }
 
 .courseBox .llamanos:hover{
     cursor: pointer;
-    box-shadow: -2px -2px 5px rgb(255, 255, 255);
+    box-shadow: 0px 0px 10px rgb(255, 255, 255);
     transition: 0.5s;
 }
 
@@ -220,11 +222,12 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    text-decoration: none;
 }
 
 .courseBox .inscribete:hover{
     cursor: pointer;
-    box-shadow: -2px -2px 5px rgb(255, 255, 255);
+    box-shadow: 0px 0px 10px rgb(255, 255, 255);
     transition: 0.5s;
 }
 
