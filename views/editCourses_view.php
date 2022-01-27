@@ -1,4 +1,15 @@
 <div class="generalContainer">
-    <p>holi</p>
+    <h2>Edición de cursos</h2>
+
+    <?php foreach($this->courses as $course){ ?>
+
+        <div class="courseEditBox">
+            <div class="image"><img src="<?= Config::PATH_IMG . "fotoprueba.jpg"?>" alt=""></div>
+            <div class="name"><h4><?= $course->getName() ?? '' ?></h4></div>
+            <div class="delete"></div>
+            <div class="edit"></div>
+        </div>
+
+    <?php } ?>
 </div>
 
