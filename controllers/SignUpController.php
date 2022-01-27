@@ -16,7 +16,7 @@ class SignUpController {
                     $usr->encriptarPassword();
                     $id=$this->model->createUser($usr);
                     if ($id!==false){
-                    header("location:".Config::URL_BASE."/login");
+                    header("location:".Config::URL_BASE."login");
                     }
                 }
             }
