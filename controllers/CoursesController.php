@@ -56,6 +56,7 @@ class CoursesController {
         $courses=$this->model->getCourses();
         $view->courses = $courses;
         $view->urlReturn = Config::URL_BASE;
+        $view->url_newCourse = Config::URL_BASE . "/courses/new";
         $view->render('editCourses');
     }
 
