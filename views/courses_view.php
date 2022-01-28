@@ -1,4 +1,5 @@
 <div class="generalContainer">
+    <a href="<?= $this->urlEditCourses ?>" class="login">Gestión de cursos</a>
     <div class="courseContainer">
         <?php foreach ($this->courses as $course) { ?>
         
@@ -9,8 +10,8 @@
                 <div class="dato"> Fecha de finalización: <?= $course->getEnd_date() ?? '' ?></div>
                 <div class="dato"> Duración: <?= $course->getDuration() ?? '' ?> horas</div>
                 <div class="contacto">
-                    <div class="llamanos">Llámanos 617238251</div>
-                    <div class="inscribete">Inscríbete</div>
+                    <a href="tel:+34616923002" class="llamanos">Llámanos</a>
+                    <a href="<?= $course->getWeb_link() ?? '' ?>" class="inscribete">Inscríbete</a>
                 </div>
             </div>
         
