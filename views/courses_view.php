@@ -2,7 +2,7 @@
     <a href="<?= $this->urlEditCourses ?>" class="login">Gestión de cursos</a>
     <div class="courseContainer">
         <?php foreach ($this->courses as $course) { ?>
-        
+        <a href="<?= Config::URL_BASE.'courses/info/'.$course->getId()?>" class="noDecorationLink">
             <div class="courseBox">
                 <div class="nombre"><?= $course->getName() ?? '' ?></div>
                 <div class="imagen"><img src="./content/img/fotoprueba.jpg" alt=""></div>
@@ -14,7 +14,7 @@
                     <a href="<?= $course->getWeb_link() ?? '' ?>" class="inscribete">Inscríbete</a>
                 </div>
             </div>
-        
+        </a>
         <?php } ?>
     </div>
 </div>
