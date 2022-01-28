@@ -33,7 +33,7 @@ class CoursesController {
                     $course = new Course($_POST);
                     $id = $this->model->createCourse($course);
                     if($id!==false){
-                        header("location:".Config::URL_BASE."/editCourses");
+                        header("location:".Config::URL_BASE."courses/editCourses");
                     }
                     $_POST = [];
                 }
@@ -42,8 +42,8 @@ class CoursesController {
             $errores = $e->getMessagesErrores();
             $view->errores = $errores;
         } finally {
-            $view->urlBack = Config::URL_BASE . "\editCourses";
-            $view->render('newCourse_view');
+            $view->urlBack = Config::URL_BASE . "courses/editCourses";
+            $view->render('newCourse');
         }
     }
 
@@ -66,14 +66,14 @@ class CoursesController {
         }*/
 
         if (!is_numeric($id)) {
-            header("location: " . Config::URL_BASE . "/editCourses");
+            header("location: " . Config::URL_BASE . "courses/editCourses");
         }
 
         $view = new View();
         try {
             $courseOld = $this->model->getCourse($id);
             if (is_null($courseOld)) {
-                header("location:" . Config::URL_BASE . "/editCourses");
+                header("location:" . Config::URL_BASE . "courses/editCourses");
             }
             if (isset($_POST["enviar"])) {
                 $validate = new CourseValidator($_POST);
@@ -107,7 +107,7 @@ class CoursesController {
 
                     $id = $this->model->editCourse($course);
                     if ($id!==false){
-                        header("location:".Config::URL_BASE."/editCourses");
+                        header("location:".Config::URL_BASE."courses/editCourses");
                     }
                 }
             } else {
@@ -133,8 +133,8 @@ class CoursesController {
             $errores = $e->getMessagesErrores();
             $view->errores = $errores;
         } finally {
-            $view->urlBack = Config::URL_BASE . "\editCourses";
-            $view->render('course_edit');
+            $view->urlBack = Config::URL_BASE . "courses/editCourses";
+            $view->render('edit_course');
         }
     }
 
