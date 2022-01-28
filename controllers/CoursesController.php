@@ -128,7 +128,7 @@ class CoursesController {
                     "image_link" => $courseOld->getImage_link(),
                     "status" => $courseOld->getStatus()
                 ];
-                $view->image = Config::URL_IMG . "/" . $courseOld->getImagen();
+                //$view->image = Config::URL_IMG . "/" . $courseOld->getImagen();
             }
         } catch (CourseValidatorException $e) {
             $errores = $e->getMessagesErrores();

@@ -1,5 +1,4 @@
 <div class="generalContainer">
-    <a href="<?= $this->urlEditCourses ?>" class="login">Gestión de cursos</a>
     <div class="courseContainer">
         <?php foreach ($this->courses as $course) { ?>
         <a href="<?= Config::URL_BASE.'courses/info/'.$course->getId()?>" class="noDecorationLink">
