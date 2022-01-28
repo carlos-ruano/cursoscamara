@@ -8,12 +8,13 @@
     <!--<link rel="stylesheet" href="http://localhost/cursoscamara/content/styles/style.css">-->
     <link rel="stylesheet" href="<?= Config:: PATH_CSS ?>">
     <link rel="icon" href="<?= Config:: PATH_IMG . "icon.jpg"?>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 <body>
     <nav class="head">
         <img src="<?= Config:: PATH_IMG . "logo.jpg" ?>" alt="">
-        <a href="" class="gestion">
+        <a href="" class="login">
             <p>Login</p>
         </a>
     </nav>
