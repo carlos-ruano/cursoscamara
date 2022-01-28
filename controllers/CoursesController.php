@@ -138,40 +138,49 @@ class CoursesController {
         }
     }
 
+    function info(int $id){
+        $view = new View();
+        $course=$this->model->getCourse($id);
+        $view->course = $course;
+        $view->urlReturn = Config::URL_BASE;
+        $view->urlCourseInfo = Config::URL_BASE."courses/info/".$id;
+        $view->render('info');
+    }
+
     function delete(int $id) {
-        if (!($_SESSION["autenticado"] && $_SESSION["rol"] === 'admin')) {
+        /*if (!($_SESSION["autenticado"] && $_SESSION["rol"] === 'admin')) {
             header("location:" . Config::URL_BASE);
-        }
+        }*/
 
         if (!is_numeric($id)) {
-            header("location: " . Config::URL_BASE . "/editCourses");
+            header("location: " . Config::URL_BASE . "courses/editCourses");
         }
         $course = $this->model->getCourse($id);
         if (is_null($course)) {
-            header("location: " . Config::URL_BASE . "/editCourses");
+            header("location: " . Config::URL_BASE . "courses/editCourses");
         } else {
             $view = new View();
             $view->course = $course;
-            $view->urlBack = Config::URL_BASE . "/editCourses";
-            $view->url_delete = Config::URL_BASE . "/courses/deletetotal/$id";
-            $view->render('course_delete');
+            $view->urlReturn = Config::URL_BASE . "courses/editCourses";
+            $view->url_delete = Config::URL_BASE . "courses/deletetotal/$id";
+            $view->render('delete_course');
         }
     }
     function deletetotal(int $id) {
-        if (!($_SESSION["autenticado"] && $_SESSION["rol"] === 'admin')) {
+        /*if (!($_SESSION["autenticado"] && $_SESSION["rol"] === 'admin')) {
             header("location:" . Config::URL_BASE);
-        }
+        }*/
         if (!is_numeric($id)) {
-            header("location: " . Config::URL_BASE . "/course");
+            header("location: " . Config::URL_BASE . "courses/editCourses");
         }
         try {
             $ok = $this->model->deleteCourse($id);
             if ($ok) {
-                header("location: " . Config::URL_BASE . "/editCourse");
+                header("location: " . Config::URL_BASE . "courses/editCourses");
             }
         } catch (MySqlDBException $e) {
             echo $e->getMessage();
-            echo "<br><a href='" . Config::URL_BASE . "/editCourse'>Volver</a>";
+            echo "<br><a href='" . Config::URL_BASE . "courses/editCourses'>Volver</a>";
         }
     }
 

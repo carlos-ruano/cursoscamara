@@ -154,6 +154,9 @@
     margin-bottom: 30px;
     font-family: 'Ubuntu', sans-serif;
 }
+.noDecorationLink{
+    text-decoration: none;
+}
 
 .courseBox:hover{
     box-shadow: 5px 5px 15px rgb(0, 0, 0);
