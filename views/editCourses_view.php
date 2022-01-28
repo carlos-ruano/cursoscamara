@@ -11,5 +11,7 @@
         </div>
 
     <?php } ?>
+
+    <a href="" class="addCourse"><i class="fas fa-plus-square"></i></a>
 </div>
 
