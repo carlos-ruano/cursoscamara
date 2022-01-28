@@ -13,7 +13,7 @@
 </head>
 <body>
     <nav class="head">
-        <img src="<?= Config:: PATH_IMG . "logo.jpg" ?>" alt="">
+        <a class="home" href="<?= Config::URL_BASE ?>"><img src="<?= Config:: PATH_IMG . "logo.jpg" ?>" alt=""></a>
         <a href="<?= Config::PATH_LOGIN ?>" class="login">
             <p>Login</p>
         </a>
