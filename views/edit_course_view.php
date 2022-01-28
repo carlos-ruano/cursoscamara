@@ -1,8 +1,7 @@
-<h3>Editar curso</h3>
-
-<div>
-    <img src="<?= $this->image ?? '' ?>" alt="image" srcset="">
+<div class="generalContainer">
+    <h2>Editar curso</h2>
+    <?php
+        echo "<a class='cancel' href='" . $this->urlBack . "'>Volver</a><br><br>";
+        include "course_form.php"; 
+    ?>
 </div>
-<?php
-echo "<a href='" . $this->urlBack . "'>Volver</a><br><br>";
-include "course_form.php"; ?>

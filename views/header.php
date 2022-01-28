@@ -15,7 +15,8 @@
 
 <body>
     <nav class="head">
-        <a href="<?= Config::URL_BASE?>">
+
+        <a class="home" href="<?= Config::URL_BASE?>">
             <img src="<?= Config::PATH_IMG . "logo.jpg" ?>" alt="" class="image100">
         </a>
         <?php if (isset($_SESSION["verified"])) { ?>
