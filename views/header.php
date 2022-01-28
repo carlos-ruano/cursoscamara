@@ -14,7 +14,7 @@
 <body>
     <nav class="head">
         <img src="<?= Config:: PATH_IMG . "logo.jpg" ?>" alt="">
-        <a href="" class="login">
+        <a href="<?= Config::PATH_LOGIN ?>" class="login">
             <p>Login</p>
         </a>
     </nav>
