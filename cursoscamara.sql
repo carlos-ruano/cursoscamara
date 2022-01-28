@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-01-2022 a las 09:59:58
+-- Tiempo de generación: 28-01-2022 a las 08:15:22
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.12
 
@@ -50,7 +50,10 @@ CREATE TABLE `courses` (
 
 INSERT INTO `courses` (`id`, `name`, `start_date`, `end_date`, `duration`, `place`, `schedule`, `contact_email`, `contact_telephone`, `description`, `web_link`, `pdf_link`, `image_link`, `status`) VALUES
 (1, 'CURSO DE VIGILANTE DE SEGURIDAD', '2021-12-01', '2021-12-30', 120, 'Cámara de Comercio de Toledo', 'De lunes a viernes, de 9:00 a 15:00 horas', 'esperanza@camaratoledo.com', '925285428', 'El objetivo de este curso es preparar vigilantes de seguridad para la obtención de la certificación acreditativa correspondiente, expedida en un centro de formación de personal de seguridad privada homologado por el Ministerio del Interior.', 'https://camaratoledo.com/programa-integral-de-cualificacion-y-empleo-pice/cursos-de-formacion-pice/vigilante-de-seguridad-en-toledo/', 'https://camaratoledo.com/wp-content/uploads/2021/11/vigilante-seguridad-toledo.pdf', NULL, 'finalizado'),
-(2, 'CURSO DE CAMARERA/O DE PISOS', NULL, NULL, 215, 'Cámara de Comercio de Toledo', 'De lunes a viernes, de 8:00 a 14:30 horas', NULL, '925822561', 'El objetivo de este curso es preparar vigilantes de seguridad para la obtención de la certificación acreditativa correspondiente, expedida en un centro de formación de personal de seguridad privada homologado por el Ministerio del Interior.', 'https://camaratoledo.com/programa-integral-de-cualificacion-y-empleo-pice/cursos-de-formacion-pice/curso-de-camarera-o-de-pisos-en-talavera/', 'https://camaratoledo.com/wp-content/uploads/2021/03/camarera-de-pisos-talavera-2021.pdf', NULL, 'proximamente');
+(2, 'CURSO DE CAMARERA/O DE PISOS', NULL, NULL, 215, 'Cámara de Comercio de Toledo', 'De lunes a viernes, de 8:00 a 14:30 horas', NULL, '925822561', 'El objetivo de este curso es preparar vigilantes de seguridad para la obtención de la certificación acreditativa correspondiente, expedida en un centro de formación de personal de seguridad privada homologado por el Ministerio del Interior.', 'https://camaratoledo.com/programa-integral-de-cualificacion-y-empleo-pice/cursos-de-formacion-pice/curso-de-camarera-o-de-pisos-en-talavera/', 'https://camaratoledo.com/wp-content/uploads/2021/03/camarera-de-pisos-talavera-2021.pdf', NULL, 'proximamente'),
+(3, 'CURSO DE OPERACIONES BÁSICAS CON FIBRA ÓPTICA E INSTALACIÓN DE PLACAS SOLARES ', NULL, NULL, 215, 'Cámara de Comercio, Plaza del Pan, 11. Talavera de la Reina.', 'De lunes a viernes, de 9 a 14 horas', NULL, '925822561', 'A jóvenes mayores de 16 y menores de 29 años beneficiarios del Sistema de Garantía Juvenil interesados en el sector de las placas solares.', 'https://camaratoledo.com/programa-integral-de-cualificacion-y-empleo-pice/cursos-de-formacion-pice/operaciones-basicas-con-fibra-optica-e-instalacion-de-placas-solares/', NULL, NULL, 'proximamente'),
+(4, 'eeeee', '0000-00-00', '0000-00-00', NULL, '', '', '', '', '', '', '', NULL, NULL),
+(5, '32r34324', '0000-00-00', '0000-00-00', NULL, '', '', '', '', '', '', '', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -61,6 +64,7 @@ INSERT INTO `courses` (`id`, `name`, `start_date`, `end_date`, `duration`, `plac
 CREATE TABLE `users` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
   `role` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -69,8 +73,8 @@ CREATE TABLE `users` (
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `password`, `role`) VALUES
-(1, 'admin', '1234', 'admin');
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`) VALUES
+(3, 'admin', 'admin@gmail.com', '$2y$10$mRJUvsDMIeb159a3a9FkNeHC7NXusLOwLvXHTrlgOwb7qfrRjERQG', 'admin');
 
 --
 -- Índices para tablas volcadas
@@ -96,13 +100,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `courses`
 --
 ALTER TABLE `courses`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
