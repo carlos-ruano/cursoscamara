@@ -22,15 +22,38 @@ class CoursesController {
     }
 
     function new() {
-        /*if (!($_SESSION["autenticado"] && $_SESSION["rol"] === 'admin')) {
+        if (!($_SESSION["verified"] && $_SESSION["role"] === 'admin')) {
             header("location:" . Config::URL_BASE);
-        }*/
+        }
         $view = new View();
         try {
             if (isset($_POST["enviar"])) {
                 $validate = new CourseValidator($_POST);
+
                 if ($validate->isOk()) {
                     $course = new Course($_POST);
+                    if (isset($_FILES["image"]["name"])) {
+                        if ($_FILES["image"]["name"] !== "") {
+                            $tmp = $_FILES["image"]["tmp_name"];
+                            $name = $_FILES["image"]["name"];
+                            $size = $_FILES["image"]["size"];
+                            $type = $_FILES["image"]["type"];
+                            $path = Config::PATH_IMAGES;
+                            $destino = $path . $name;
+                            $course->setImage_link($name);
+
+                            if (!file_exists($destino)) {
+                                if ($type === "image/jpeg") {
+                                    $ok = move_uploaded_file($tmp, $destino);
+                                    if (!$ok) {
+                                        $view->errores["image"] = "El archivo no se ha subido.";
+                                    }
+                                } else {
+                                    $view->errores["image"] = "El archivo seleccionado no es una imagen.";
+                                }
+                            } 
+                        }
+                    }
                     $id = $this->model->createCourse($course);
                     if ($id !== false) {
                         header("location:" . Config::URL_BASE . "courses/editCourses");
@@ -48,10 +71,9 @@ class CoursesController {
     }
 
     function editCourses() {
-
-        /*if (!($_SESSION["autenticado"] && $_SESSION["rol"] === 'administrador')) {
+        if (!($_SESSION["verified"] && $_SESSION["role"] === 'admin')) {
             header("location:" . Config::URL_BASE);
-        }*/
+        }
         $view = new View();
         $courses = $this->model->getCourses();
         $view->courses = $courses;
@@ -62,9 +84,9 @@ class CoursesController {
 
 
     function edit(int $id) {
-        /*if (!($_SESSION["autenticado"] && $_SESSION["rol"] === 'administrador')) {
+        if (!($_SESSION["verified"] && $_SESSION["role"] === 'admin')) {
             header("location:" . Config::URL_BASE);
-        }*/
+        }
 
         if (!is_numeric($id)) {
             header("location: " . Config::URL_BASE . "courses/editCourses");
@@ -84,8 +106,8 @@ class CoursesController {
                     $course = new Course($_POST);
                     $course->setId($id);
                     $course->setImage_link($courseOld->getImage_link());
-                    var_dump($course);    
-                    
+                    var_dump($course);
+
                     /*if ($_FILES["image"]["name"] !== "") {
                         $tmp = $_FILES["image"]["tmp_name"];
                         $name = $_FILES["image"]["name"];
@@ -109,7 +131,7 @@ class CoursesController {
                     } else {
                         $view->imagen = Config::URL_IMG . "/" . $courseOld->getImagen();
                     }*/
-                    
+
                     $id = $this->model->editCourse($course);
                     if ($id !== false) {
                         header("location:" . Config::URL_BASE . "courses/editCourses");
@@ -154,9 +176,9 @@ class CoursesController {
     }
 
     function delete(int $id) {
-        /*if (!($_SESSION["autenticado"] && $_SESSION["rol"] === 'admin')) {
+        if (!($_SESSION["verified"] && $_SESSION["role"] === 'admin')) {
             header("location:" . Config::URL_BASE);
-        }*/
+        }
 
         if (!is_numeric($id)) {
             header("location: " . Config::URL_BASE . "courses/editCourses");
@@ -173,9 +195,9 @@ class CoursesController {
         }
     }
     function deletetotal(int $id) {
-        /*if (!($_SESSION["autenticado"] && $_SESSION["rol"] === 'admin')) {
+        if (!($_SESSION["verified"] && $_SESSION["role"] === 'admin')) {
             header("location:" . Config::URL_BASE);
-        }*/
+        }
         if (!is_numeric($id)) {
             header("location: " . Config::URL_BASE . "courses/editCourses");
         }
