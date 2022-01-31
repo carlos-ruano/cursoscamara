@@ -1,7 +1,7 @@
-
 <style>
-    .footer1{
-        padding: 2rem;
+
+.footer1{
+    padding: 2rem;
     display: flex;
     background-color: black;
     justify-content: space-between;
@@ -19,14 +19,34 @@
     text-decoration: none;
     color: white;
 }
+
+.lista{
+    list-style: none;
+}
+
+
+
+/*------------------MEDIA-QUERIES-------------------*/
+
+@media (max-width: 800px) {
+    .footer1{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .info{
+        margin-top: 30px;
+    }   
+}
 </style>
+
 <footer>
     <div class="footer1">
         <div>
             <img width="211" height="73" src="https://camaratoledo.com/wp-content/uploads/2019/10/llogotipo-camara-de-comercio-de-toledo-blanco.png" data-src="https://camaratoledo.com/wp-content/uploads/2019/10/llogotipo-camara-de-comercio-de-toledo-blanco.png" class="attachment-large size-large lazyloaded" alt="">
         </div>
-        <div>
-            <ul>
+        <div class="info">
+            <ul class="lista">
                 <li>Pl. del Pan, 11, 45600 Talavera de la Reina, Toledo</li>
                 <li>925 82 25 61</li>
                 <li>camaratoledo@camaratoledo.com</li>
