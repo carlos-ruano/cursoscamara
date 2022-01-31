@@ -105,7 +105,7 @@
 .generalContainer{
     width: 100%;
     height: calc(100vh - 75px);
-    background: url("../img/fondo2.jpg");
+    background: url("../img/fondo2.jpeg");
     background-size:cover;
     background-position: right;
     animation-name: aparecer;
@@ -596,6 +596,26 @@
 }
 
 
+
+.divBorrar{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.botonBorrar{
+    padding: 10px 15px;
+    background-color: rgba(199, 59, 59);
+    text-decoration: none;
+    color: white;
+    margin-bottom: 15px;
+}
+.botonBorrar:hover{
+        cursor: pointer;
+        background-color: #ffeda6;
+        transition: 0.5s;
+        color: black;
+        box-shadow: 5px 5px 15px black;
+}
 
 /*-----------------------------------KEYFRAMES------------------------------------------*/
 
