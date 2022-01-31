@@ -1,7 +1,7 @@
 <div class="infoCurso">
     <div class="nombre"><?= $this->course->getName() ?? '' ?></div>
     <div class="infoPrincipal">
-        <div class="imagen"><img src="<?= Config::PATH_IMG.'fotoprueba.jpg'?>" alt=""></div>
+        <div class="imagen"><img src="<?= Config::PATH_IMG .'fotoprueba.jpg'?>" alt=""></div>
         <div class="infoBasica">
             <h3>Datos del curso</h3>
             <p class="datoIzq"><div class="dato"> Fecha de inicio:</p> <p class="datoDer"><?= $this->course->getStart_date() ?? '' ?></p></div>
@@ -17,10 +17,5 @@
     <div class="description">
         <h3>Descripción</h3>
         <div><p><?= $this->course->getDescription() ?? ''?></p></div>
-    </div>
-    <div class="contacto">
-        <a href="tel:+34616923002" class="botonContacto">Llámanos</a>
-        <a href="" class="botonContacto">PDF</a>
-        <a href="<?= $this->course->getWeb_link() ?? '' ?>" class="botonContacto">Inscríbete</a>
     </div>
 </div>
