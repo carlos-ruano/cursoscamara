@@ -51,8 +51,8 @@
             <div><?= $this->errores['pdf_link'] ?? "" ?></div>
         </div>
         <div class="celda">
-            <div class="tipoDato"><label for="imagen">Imagen: </label></div>
-            <div class="dato"><input type="file" id="imagen" name="imagen"></div>
+            <div class="tipoDato"><label for="image">Imagen: </label></div>
+            <div class="dato"><input type="file" id="image" name="image"></div>
             <div><?= $this->errores['imagen'] ?? "" ?></div>
         </div>
         <div class="celda">

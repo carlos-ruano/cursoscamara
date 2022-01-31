@@ -24,7 +24,7 @@
                 <div>Bienvenido, <?= $_SESSION["name"] ?? '' ?></div>
                 <div>
                     <a href="<?= Config::URL_BASE.'courses/editCourses'?>" class="admin_link_edit">Editar cursos</a>
-                    <a href="<?= Config::URL_BASE.'login/new'?>" class="admin_link_new">Nuevo usuario</a>
+                    <a href="<?= Config::URL_BASE.'signup'?>" class="admin_link_new">Nuevo usuario</a>
                     <a href="<?= Config::URL_BASE.'login/cerrar'?>"class="admin_link_close">Cerrar sesión</a>
                 </div>
             </div>
