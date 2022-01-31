@@ -1,5 +1,8 @@
-<h3>¿Está seguro de borrar este curso?</h3>
-
-<?php include "course_info.php";?>
-<a href="<?= $this->urlReturn ?>" class="gestion">Volver</a>
-<a href="<?= $this->url_delete ?>" class="gestion">Borrar</a>
+<div class="generalContainer">
+    <h2>¿Borrar curso?</h2>
+    <div class="divBorrar">
+        <a href="<?= $this->urlReturn ?>" class="cancel">Volver</a>
+        <a href="<?= $this->url_delete ?>" class="botonBorrar">Borrar</a>
+    </div>
+    <?php include "course_info.php"; ?>
+</div>

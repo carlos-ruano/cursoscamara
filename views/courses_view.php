@@ -1,4 +1,5 @@
 <div class="generalContainer">
+<h2>Nuestros cursos formativos</h2>
     <div class="courseContainer">
         <?php foreach ($this->courses as $course) { ?>
         <a href="<?= Config::URL_BASE.'courses/info/'.$course->getId()?>" class="noDecorationLink">
