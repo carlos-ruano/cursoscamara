@@ -1,5 +1,5 @@
 <div class="formulario">
-    <form action="#" method="post" class="formulario" enctype="multipart/form-data">
+    <form action="#" method="post" enctype="multipart/form-data">
         <div class="celda">
             <div class="tipoDato"><label for="name">Nombre del curso: </label></div>
             <div class="dato"><input type="text" id="name" name="name" value="<?= $_POST['name'] ?? "" ?>"></div>
@@ -52,7 +52,7 @@
         </div>
         <div class="celda">
             <div class="tipoDato"><label for="image">Imagen: </label></div>
-            <div class="dato"><input type="file" id="image" name="image"></div>
+            <div class="datoImg"><input type="file" id="image" name="image"></div>
             <div><?= $this->errores['imagen'] ?? "" ?></div>
         </div>
         <div class="celda">
