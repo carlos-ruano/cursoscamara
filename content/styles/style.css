@@ -329,6 +329,7 @@
     margin-top: 30px;
     margin-bottom: 30px;
     font-size: 2em;
+    text-align: center;
 }
 
 .courseEditBox{
@@ -759,6 +760,10 @@
     .infoCurso .dato{
         flex-direction: column;
         align-items: flex-start;
+    }
+
+    .infoCurso .nombre{
+        font-size: 1em;
     }
 
 }
