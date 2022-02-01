@@ -6,6 +6,7 @@ class View {
     }
 
     function render($page) {
-        require Config::PATH_BASE . "/views/" . $page . "_view.php";
+        $path= new Config();
+        require $path->path_base . "views/" . $page . "_view.php";
     }
 }

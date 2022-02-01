@@ -57,7 +57,11 @@
         </div>
         <div class="celda">
             <div class="tipoDato"><label for="status">Disponible: </label></div>
-            <div class="dato"><input type="checkbox" id="status" name="status" value="<?= $_POST['status'] ?? "" ?>"></div>
+            <div class="dato">
+                <div class="celda">
+                <input type="checkbox" id="status" name="status" value="<?= $_POST['status'] ?? "" ?>"></div>
+                <div><img src="<?php if (isset($_POST['image'])){echo Config::PATH_IMG.$_POST['image'];}; ?>" alt="" width="20"></div>
+            </div>
             <div><?= $this->errores['status'] ?? "" ?></div>
         </div>
         <div class="celda">
