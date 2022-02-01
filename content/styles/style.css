@@ -17,7 +17,11 @@
     align-items: center;
 }
 
-.head img{
+.image100{
+    height: 100%;
+}
+
+.head .home{
     height: 100%;
 }
 
@@ -49,11 +53,59 @@
     box-shadow: 5px 5px 15px black;
     transition: 0.5s;
 }
+.admin_nav{
+    width: 350px;
+    margin-right: 30px;
+    text-align: right;
+}
+.admin_nav div{
+    margin-bottom: 0.7rem;
+}
+
+.admin_nav div a{
+    text-decoration: none;
+    padding: 0.4rem;
+    border-radius: 0.5rem;
+}
+.admin_link_edit{
+    color: white;
+    background-color: rgb(199, 59, 59);
+}
+.admin_link_edit:hover{
+    color: #1e272e;
+    background-color: rgb(221, 81, 81);
+    box-shadow: 5px 5px 10px black;
+    transition: 0.5s;
+}
+.admin_link_new{
+    color: #1e272e;
+    background-color: #808e9b;
+}
+.admin_link_new:hover{
+    color: white;
+    background-color: #485460;
+    box-shadow: 5px 5px 10px black;
+    transition: 0.5s;
+}
+.admin_link_close:hover{
+    box-shadow: 5px 5px 10px black;
+    transition: 0.5s;
+}
+.admin_link_close{
+    color: black;
+    background-color: #fce381;
+}
+.admin_link_close:hover{
+    background-color: #fade70;
+    color: white;
+    box-shadow: 5px 5px 10px black;
+    transition: 0.5s;
+}
 
 .generalContainer{
     width: 100%;
     height: calc(100vh - 75px);
-    background: url("../img/fondo2.jpg");
+    background: url("../img/fondo2.jpeg");
     background-size:cover;
     background-position: right;
     animation-name: aparecer;
@@ -62,6 +114,38 @@
     flex-direction: column;
     align-items: center;
     overflow: auto;
+}
+
+.contactoContainer{
+    width: 80%;
+}
+
+.contacto{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.contacto .botonContacto{
+    width: 100px;
+    height: 50px;
+    text-decoration: none;
+    color: white;
+    background-color: rgba(199, 59, 59);
+    padding: 3px 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.contacto .botonContacto:hover{
+    cursor: pointer;
+    box-shadow: 5px 5px 15px black;
+    transition: 0.5s;
 }
 
 /*-----------------home_view-------------------------*/
@@ -154,6 +238,9 @@
     margin-bottom: 30px;
     font-family: 'Ubuntu', sans-serif;
 }
+.noDecorationLink{
+    text-decoration: none;
+}
 
 .courseBox:hover{
     box-shadow: 5px 5px 15px rgb(0, 0, 0);
@@ -185,12 +272,12 @@
 .courseBox .dato{
     width: 100%;
     height: 10%;
-    background-color: rgba(42, 42, 42, 0.408);
+    background-color: rgb(255, 255, 255);
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 .courseBox .contacto{
@@ -201,6 +288,7 @@
 }
 
 .courseBox .llamanos{
+    height: 100%;
     width: 50%;
     background-color: rgb(167, 167, 167);
     color: rgb(0, 0, 0);
@@ -218,8 +306,9 @@
 }
 
 .courseBox .inscribete{
+    height: 100%;
     width: 50%;
-    background-color: rgb(226, 216, 70);
+    background-color: #ffeda6;
     color: rgb(0, 0, 0);
     display: flex;
     justify-content: center;
@@ -261,7 +350,7 @@
 .courseEditBox .name{
     width: 65%;
     height: 100%;
-    background-color: rgba(223, 223, 223);
+    background-color: rgb(255, 255, 255);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -273,12 +362,13 @@
 .courseEditBox .delete{
     width: 10%;
     height: 100%;
-    background-color: rgba(199, 59, 59);
-    color: white;
+    background-color: #ffeda6;
+    color: rgb(0, 0, 0);
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.2em;
+    text-decoration: none;
 }
 
 .courseEditBox .delete:hover{
@@ -290,12 +380,13 @@
 .courseEditBox .edit{
     width: 10%;
     height: 100%;
-    background-color: rgba(226, 216, 70);
+    background-color: rgba(199, 59, 59);
     color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.2em;
+    text-decoration: none;
 }
 
 .courseEditBox .edit:hover{
@@ -309,20 +400,223 @@
     height: 80px;
     margin-top: 30px;
     margin-bottom: 30px;
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
     display: flex;
     justify-content: center;
     align-items: center;
-    color: rgba(223, 223, 223);
-    font-size: 5em;
-    border-radius: 15px;
+    color: black;
+    font-size: 3em;
+    text-decoration: none;
 }
 
 .addCourse:hover{
     cursor: pointer;
     transition: 0.5s;
     color: rgba(199, 59, 59);
+    box-shadow: 5px 5px 15px black;
 
+}
+
+/*--------------------Formularios-----------------------*/
+
+.formulario{
+    width: 50%;
+    margin-bottom: 30px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    margin-top: 30px;
+    border: 5px solid rgba(199, 59, 59);
+}
+
+.formulario form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.celda{
+    width: 100%;
+    display: flex;
+    margin-top: 30px;
+    margin-right: 30px;
+    margin-left: 30px;
+}
+
+.tipoDato{
+    width: 30%;
+    display: flex;
+    align-items: center;
+}
+
+.dato{
+    width: 60%;
+}
+
+.dato input{
+    width: 100%;
+    height: 30px;
+    text-align: left;
+    border: 3px solid rgba(199, 59, 59);
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.dato input:focus{
+    box-shadow: 0px 0px 15px rgba(199, 59, 59);
+    outline: none;
+}
+
+.dato textarea{
+    max-width: 100%;
+    min-width: 100%;
+    border: 3px solid rgba(199, 59, 59);
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.dato textarea:focus{
+    box-shadow: 0px 0px 15px rgba(199, 59, 59);
+    outline: none;
+}
+
+.celda .enviar{
+    width: 90%;
+    margin-bottom: 30px;
+}
+
+.celda .enviar input{
+    padding: 10px 15px;
+    width: 100%;
+    background-color: #ffeda6;
+    font-size: 1.1em;
+    border:none;
+}
+
+.celda .enviar input:hover{
+    cursor: pointer;
+    background-color: rgba(199, 59, 59);
+    transition: 0.5s;
+    color: white;
+    box-shadow: 5px 5px 15px black;
+}
+
+.cancel{
+    padding: 10px 15px;
+    background-color: #ffeda6;
+    text-decoration: none;
+    color: black;
+    margin-bottom: 15px;
+}
+
+.cancel:hover{
+    cursor: pointer;
+    background-color: rgba(199, 59, 59);
+    transition: 0.5s;
+    color: white;
+    box-shadow: 5px 5px 15px black;
+}
+
+/*------------------Info-Cursos------------------*/
+
+.infoCurso{
+    width: 80%;
+    background-color:rgb(255, 255, 255);
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.infoCurso .nombre{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    background-color: rgba(199, 59, 59);
+    color: white;
+    text-align: center;
+}
+
+.infoPrincipal{
+    width: 100%;
+    display: flex;
+}
+
+.infoCurso .imagen{
+    width: 50%;
+    height: 100%;
+}
+
+.infoCurso .imagen img{
+    width: 100%;
+}
+
+.infoCurso .infoBasica{
+    width: 40%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-left: 15px;
+    margin-top: 30px;
+}
+
+.infoCurso .dato{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.infoCurso .dato .datoDer{
+    width: 50%;
+    color: rgba(199, 59, 59);
+}
+
+.infoCurso .dato .datoIzq{
+    width: 50%;
+}
+
+.infoCurso .description{
+    width: 90%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-left: 15px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.infoCurso .description p{
+    margin-top: 15px;
+    margin-left: 5px;
+}
+
+
+
+.divBorrar{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.botonBorrar{
+    padding: 10px 15px;
+    background-color: rgba(199, 59, 59);
+    text-decoration: none;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.botonBorrar:hover{
+    cursor: pointer;
+    background-color: #ffeda6;
+    transition: 0.5s;
+    color: black;
+    box-shadow: 5px 5px 15px black;
 }
 
 /*-----------------------------------KEYFRAMES------------------------------------------*/
@@ -387,6 +681,48 @@
     .courseEditBox{
         width: 95%;
     }
+
+    .formulario{
+        width: 95%;
+    }
+
+    .celda{
+        flex-direction: column;
+    }
+
+    .tipoDato{
+        width: 90%;
+        margin-top: 10px;
+    }
+
+    .dato{
+        width: 80%;
+        margin-top: 10px;
+        margin-left: 5px;
+    }
+
+    .celda .enviar{
+        width: 80%;
+    }
+
+    .infoPrincipal{
+        flex-direction: column;
+    }
+
+    .infoCurso .imagen{
+        width: 100%;
+    }
+
+    .infoCurso .infoBasica{
+        width: 100%;
+        margin-bottom: 50px;
+    }
+
+    .infoCurso .description{
+        margin-top: 0px;
+        margin-bottom: 50px;
+        text-align: justify;
+    }
 }
 
 @media (max-width: 800px) {
@@ -419,6 +755,12 @@
     .gestion{
         margin-right: 5px;
     }
+
+    .infoCurso .dato{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
 }
 
 @media (max-width: 500px) {
@@ -454,6 +796,15 @@
         width: 90%;
         margin-right: 0px;
         margin-top: 35px; 
+    }
+
+    .contactoContainer .contacto{
+        flex-direction: column;
+        margin-top: 30px;
+    }
+
+    .contacto .botonContacto{
+        margin-bottom: 15px;
     }
 }
 

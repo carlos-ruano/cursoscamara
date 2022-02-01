@@ -69,7 +69,7 @@ class CoursesModel {
         $ok = $this->cnx->execute($sql, $params);
         return $ok;
     }
-    function deleteLibro($id) {
+    function deleteCourse($id) {
         $sql = "DELETE FROM `courses` WHERE id=?";
         $ok = $this->cnx->execute($sql, [$id]);
         return $ok ;
