@@ -6,7 +6,7 @@ class MySqlDB {
 
     function __construct() {
         try {
-            $conexion = new PDO(Config_db::DNS, Config_db::USER, Config_db::PASS);
+            $conexion = new PDO(ConfigDB::DNS, ConfigDB::USER, ConfigDB::PASS);
             $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $this->db = $conexion;
         } catch (PDOException $e) {
