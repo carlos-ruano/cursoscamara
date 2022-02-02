@@ -67,7 +67,7 @@ class CoursesController {
             $view->errores = $errores;
         } finally {
             $view->urlBack = Config::URL_BASE . "courses/editCourses";
-            $view->render('newCourse');
+            $view->render('newcourse');
         }
     }
 

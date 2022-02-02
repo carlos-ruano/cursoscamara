@@ -249,7 +249,7 @@
 
 .courseBox .nombre{
     width: 100%;
-    height: 17%;
+    height: 22%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -260,7 +260,7 @@
 
 .courseBox .imagen{
     width: 100%;
-    height: 40%;
+    height: 35%;
     background-color: darkkhaki;
 }
 
@@ -269,7 +269,7 @@
     height: 100%;
 }
 
-.courseBox .dato{
+.courseBox .datos{
     width: 100%;
     height: 10%;
     background-color: rgb(255, 255, 255);
@@ -329,6 +329,7 @@
     margin-top: 30px;
     margin-bottom: 30px;
     font-size: 2em;
+    text-align: center;
 }
 
 .courseEditBox{
@@ -759,6 +760,10 @@
     .infoCurso .dato{
         flex-direction: column;
         align-items: flex-start;
+    }
+
+    .infoCurso .nombre{
+        font-size: 1em;
     }
 
 }
