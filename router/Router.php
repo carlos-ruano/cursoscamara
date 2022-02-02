@@ -7,7 +7,7 @@ class Router {
 
     function __construct(string $urlNoExplode) {
         if (isset($urlNoExplode)) {
-            $url = explode("/", $_GET["url"]);
+            $url= explode("/", $urlNoExplode);
             $controlador = 'Home';
             $accion = 'index';
             $id = 0;
@@ -26,15 +26,17 @@ class Router {
             }
 
             $class_name = ucwords($controlador) . "Controller";
+            $obj = new $class_name;
             try {
                 $obj = new $class_name;
+                
                 if (method_exists($obj, $accion)) {
                     call_user_func([$obj, $accion], $id);
                 } else {
+                    var_dump($obj);
                     echo "Página no encontrada 404";
                 }
             } catch (Exception $e) {
-                echo $e->getMessage();
             }
         } else {
             $ctrl = new HomeController();

@@ -38,7 +38,8 @@ class CoursesController {
                             $name = $_FILES["image"]["name"];
                             $size = $_FILES["image"]["size"];
                             $type = $_FILES["image"]["type"];
-                            $path = Config::PATH_IMAGES;
+                            $config = new Config;
+                            $path = $config->path_imagenes;
                             $destino = $path . $name;
                             $course->setImage_link($name);
 
@@ -78,7 +79,7 @@ class CoursesController {
         $courses = $this->model->getCourses();
         $view->courses = $courses;
         $view->urlReturn = Config::URL_BASE;
-        $view->url_newCourse = Config::URL_BASE . "/courses/new";
+        $view->url_newCourse = Config::URL_BASE . "courses/new";
         $view->render('editCourses');
     }
 
