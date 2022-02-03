@@ -1,8 +1,8 @@
 <div class="formulario">
-        <div class="image100">
+        <div class="">
             <img src="<?= isset($this->image)? $this->image :""?>" alt="">
         </div>
-    <form action="#" method="post" enctype="multipart/form-data">
+    <form action="#" method="POST" enctype="multipart/form-data">
         
 
         <div class="celda">
