@@ -1,7 +1,3 @@
-
-
-<?= $this->err_msg ?? "" ?>
-
 <div class="generalContainer">
 <h2>Registro</h2>
 <div class="formulario">

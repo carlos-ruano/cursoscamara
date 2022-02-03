@@ -1,4 +1,4 @@
-<?= $this->err_msg ?? "" ?>
+
 <div class="generalContainer">
     <h2>Log-in</h2>
 <div class="formulario">
@@ -12,6 +12,10 @@
             <div class="tipoDato"><label for="password">Contraseña: </label></div>
             <div class="dato"><input type="password" id="password" name="password"></div>
             <div><?= $this->errores['password'] ?? "" ?></div>
+        </div>
+        <br>
+        <div>
+            <?= $this->err_msg ?? "" ?>
         </div>
         <br>
         <div class="celda">
