@@ -1,7 +1,7 @@
 <div class="formulario">
+
             <img class="image100" src="<?= isset($this->image)? $this->image :""?>" alt="">
     <form action="#" method="post" enctype="multipart/form-data">
-        
 
         <div class="celda">
             <div class="tipoDato"><label for="name">Nombre del curso: </label></div>
