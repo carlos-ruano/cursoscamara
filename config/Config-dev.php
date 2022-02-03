@@ -11,6 +11,7 @@ class Config {
     const EMAIL_CHARACTER_MAX = 100;
     const PASS_CHARACTER_MAX = 255;
     const PASS_CHARACTER_MIN = 4;
+    const MAX_255 = 255;
     function __construct()
     {
         $this->path_base = $_SERVER["DOCUMENT_ROOT"] . "/cursoscamara/";
