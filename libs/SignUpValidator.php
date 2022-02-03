@@ -5,7 +5,6 @@ class SignUpValidatorException extends FormValidatorException {
 
 class SignUpValidator {
     function __construct(array $data) {
-        var_dump($data);
         $this->crush = new SignUpValidatorException('Datos Incorrectos');
         $this->hayError = false;
 
