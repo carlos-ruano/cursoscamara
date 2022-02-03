@@ -17,11 +17,11 @@
     align-items: center;
 }
 
-.image100{
+.head .home{
     height: 100%;
 }
 
-.head .home{
+.imageLogo{
     height: 100%;
 }
 
@@ -261,7 +261,7 @@
 .courseBox .imagen{
     width: 100%;
     height: 35%;
-    background-color: darkkhaki;
+    background-color: #fade70;
 }
 
 .courseBox .imagen img{
@@ -340,7 +340,7 @@
 }
 
 .courseEditBox .image{
-    width: 15%;
+    width: 13%;
 }
 
 .courseEditBox .image img{
@@ -349,7 +349,7 @@
 }
 
 .courseEditBox .name{
-    width: 65%;
+    width: 67%;
     height: 100%;
     background-color: rgb(255, 255, 255);
     display: flex;
@@ -427,6 +427,9 @@
     border-radius: 5px;
     margin-top: 30px;
     border: 5px solid rgba(199, 59, 59);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .formulario form{
@@ -518,6 +521,12 @@
     transition: 0.5s;
     color: white;
     box-shadow: 5px 5px 15px black;
+}
+
+.image100{
+    width: 50%;
+    margin: auto;
+    margin-top: 35px;
 }
 
 /*------------------Info-Cursos------------------*/
@@ -810,6 +819,10 @@
 
     .contacto .botonContacto{
         margin-bottom: 15px;
+    }
+
+    .login{
+        margin-right: 0px;
     }
 }
 
