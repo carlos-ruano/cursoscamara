@@ -163,6 +163,7 @@ class CoursesController {
             }
         } catch (CourseValidatorException $e) {
             $errores = $e->getMessagesErrores();
+            $view->image = Config::PATH_IMG . $courseOld->getImage_link();
             $view->errores = $errores;
         } finally {
             $view->urlBack = Config::URL_BASE . "courses/editCourses";

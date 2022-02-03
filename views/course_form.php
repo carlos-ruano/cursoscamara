@@ -61,8 +61,7 @@
         <div class="celda">
             <div class="tipoDato"><label for="status">Disponible: </label></div>
             <div class="dato">
-                <div class="celda">
-                <input type="checkbox" id="status" name="status" value="<?= $_POST['status'] ?? "" ?>"></div>
+                <input type="checkbox" id="status" name="status" value="disponible" <?= isset($_POST["status"]) && $_POST["status"] === "disponible" ? "checked" : "" ?>>
             </div>
             <div><?= $this->errores['status'] ?? "" ?></div>
         </div>
