@@ -1,7 +1,5 @@
 <div class="formulario">
-        <div class="image100">
-            <img src="<?= isset($this->image)? $this->image :""?>" alt="">
-        </div>
+            <img class="image100" src="<?= isset($this->image)? $this->image :""?>" alt="">
     <form action="#" method="post" enctype="multipart/form-data">
         
 
