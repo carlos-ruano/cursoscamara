@@ -85,7 +85,8 @@
             <div class="divDato">
                 <div class="dato">
                     <div class="celda">
-                    <input type="checkbox" id="status" name="status" value="<?= $_POST['status'] ?? "" ?>"></div>
+                    <input type="checkbox" id="status" name="status" value="disponible" <?= isset($_POST["status"]) && $_POST["status"] === "disponible" ? "checked" : "" ?>>
+                  </div>
                 </div>
                 <div class="error"><?= $this->errores['status'] ?? "" ?></div>
             </div>

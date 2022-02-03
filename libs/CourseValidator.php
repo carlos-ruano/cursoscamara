@@ -21,7 +21,7 @@ class CourseValidator {
 */
         $this->validate_name($name);
         if ($start_date != "s")
-            $this->validate_date($end_date, "start_date");
+            $this->validate_date($start_date, "start_date");
         if ($end_date != "s")
             $this->validate_date($end_date, "end_date");
         if (($start_date != "" && $end_date != ""))
