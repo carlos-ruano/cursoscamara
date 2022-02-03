@@ -6,7 +6,6 @@ class CourseValidator {
     function __construct(array $data) {
         $this->crush = new CourseValidatorException('Datos Incorrectos.');
         $this->hayError = false;
-        var_dump($data);
         $name = $data["name"];
         $start_date = $data["start_date"];
         $end_date = $data["end_date"];

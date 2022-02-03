@@ -452,8 +452,12 @@
     align-items: center;
 }
 
-.dato{
+.divDato{
     width: 60%;
+}
+
+.dato{
+    width: 100%;
 }
 
 .dato input{
@@ -527,6 +531,10 @@
     width: 50%;
     margin: auto;
     margin-top: 35px;
+}
+
+.error{
+    color: rgba(199, 59, 59);
 }
 
 /*------------------Info-Cursos------------------*/
@@ -709,6 +717,14 @@
         width: 80%;
         margin-top: 10px;
         margin-left: 5px;
+    }
+
+    .error{
+        margin-left: 5px;
+    }
+
+    .divDato{
+        width: 100%;
     }
 
     .celda .enviar{
