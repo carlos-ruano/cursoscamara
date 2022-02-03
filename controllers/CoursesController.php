@@ -38,8 +38,7 @@ class CoursesController {
                             $name = $_FILES["image"]["name"];
                             $size = $_FILES["image"]["size"];
                             $type = $_FILES["image"]["type"];
-                            $config = new Config;
-                            $path = $config->path_imagenes;
+                            $path = $_SERVER["DOCUMENT_ROOT"] . "/cursoscamara/content/img/";
                             $destino = $path . $name;
                             $course->setImage_link($name);
 
@@ -113,15 +112,15 @@ class CoursesController {
                         $name = $_FILES["image"]["name"];
                         $size = $_FILES["image"]["size"];
                         $type = $_FILES["image"]["type"];
-                        $path = new Config();
+                        $path = $_SERVER["DOCUMENT_ROOT"] . "/cursoscamara/content/img/";
                         
-                        $destino = $path->path_imagenes . "/" . $name;
+                        $destino = $path . "/" . $name;
                         if ($type === "image/jpeg") {
                             $ok = move_uploaded_file($tmp, $destino);
                             if ($ok) {
                                 
                                 $course->setImage_link($name);
-                                $file = $path->path_imagenes . "/" . $courseOld->getImage_link();
+                                $file = $path . "/" . $courseOld->getImage_link();
                                 if (file_exists($file)) {
                                     unlink($file);
                                 }
