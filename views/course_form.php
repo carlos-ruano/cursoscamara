@@ -1,5 +1,10 @@
 <div class="formulario">
+        <div class="image100">
+            <img src="<?= isset($this->image)? $this->image :""?>" alt="">
+        </div>
     <form action="#" method="post" enctype="multipart/form-data">
+        
+
         <div class="celda">
             <div class="tipoDato"><label for="name">Nombre del curso: </label></div>
             <div class="dato"><input type="text" id="name" name="name" value="<?= $_POST['name'] ?? "" ?>"></div>
@@ -53,14 +58,13 @@
         <div class="celda">
             <div class="tipoDato"><label for="image">Imagen: </label></div>
             <div class="datoImg"><input type="file" id="image" name="image"></div>
-            <div><?= $this->errores['imagen'] ?? "" ?></div>
+            <div><?= $this->errores['image'] ?? "" ?></div>
         </div>
         <div class="celda">
             <div class="tipoDato"><label for="status">Disponible: </label></div>
             <div class="dato">
                 <div class="celda">
                 <input type="checkbox" id="status" name="status" value="<?= $_POST['status'] ?? "" ?>"></div>
-                <div><img src="<?php if (isset($_POST['image'])){echo Config::PATH_IMG.$_POST['image'];}; ?>" alt="" width="20"></div>
             </div>
             <div><?= $this->errores['status'] ?? "" ?></div>
         </div>
