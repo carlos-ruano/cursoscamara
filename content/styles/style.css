@@ -23,6 +23,12 @@
 
 .imageLogo{
     height: 100%;
+    
+   transition: 0.5s;
+}
+.imageLogo:hover{
+   transform: scale(1.05);
+   transition: 0.5s;
 }
 
 .inicio{
@@ -46,11 +52,16 @@
     color: white;
     text-align: center;
     text-decoration: none;
+    
+    transition: 0.5s;
 }
 
 .login:hover{
     cursor: pointer;
     box-shadow: 5px 5px 15px black;
+    background-color: #fade70;
+    color: black;
+    transform: scale(1.1);
     transition: 0.5s;
 }
 .admin_nav{
@@ -140,20 +151,25 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    
+    transition: 0.5s;
 }
 
 .contacto .botonContacto:hover{
     cursor: pointer;
     box-shadow: 5px 5px 15px black;
+    background-color: #ffeda6;
+    color: black;
+    transform: scale(1.05);
     transition: 0.5s;
 }
 
 /*-----------------home_view-------------------------*/
 
 .principal{
-    width: 55%;
+    width: 50%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.585);
+    background-color: rgba(255, 255, 255, 0.7);
 }
 
 .titulo{
@@ -164,7 +180,6 @@
     font-size: 1.5em;
     width: 100%;
     height: 30%;
-    opacity: 0.8;
     font-family: 'Ubuntu', sans-serif;
 }
 
@@ -176,7 +191,6 @@
     font-size: 1.5em;
     width: 100%;
     height: 30%;
-    opacity: 0.8;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -200,12 +214,12 @@
     width: 75%;
     height: 100px;
     background-color: rgb(199, 59, 59);
-    opacity: 1.5;
+    
+    border: 1px solid rgb(56, 56, 56);
     color: white;
     display: flex;
     justify-content: center;
     align-items: center;
-    opacity: 0.9;
     animation-name: deslizar;
     animation-duration: 5s;
     text-decoration: none;
@@ -237,6 +251,9 @@
     margin-right: 50px;
     margin-bottom: 30px;
     font-family: 'Ubuntu', sans-serif;
+    border: 1px solid rgb(56, 56, 56);
+    
+    transition: 0.5s;
 }
 .noDecorationLink{
     text-decoration: none;
@@ -244,6 +261,7 @@
 
 .courseBox:hover{
     box-shadow: 5px 5px 15px rgb(0, 0, 0);
+    transform: scale(1.1);
     transition: 0.5s;
 }
 
@@ -262,6 +280,7 @@
     width: 100%;
     height: 35%;
     background-color: #fade70;
+
 }
 
 .courseBox .imagen img{
@@ -290,24 +309,6 @@
 .courseBox .llamanos{
     height: 100%;
     width: 50%;
-    background-color: rgb(167, 167, 167);
-    color: rgb(0, 0, 0);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    text-decoration: none;
-}
-
-.courseBox .llamanos:hover{
-    cursor: pointer;
-    box-shadow: 0px 0px 10px rgb(255, 255, 255);
-    transition: 0.5s;
-}
-
-.courseBox .inscribete{
-    height: 100%;
-    width: 50%;
     background-color: #ffeda6;
     color: rgb(0, 0, 0);
     display: flex;
@@ -315,11 +316,35 @@
     align-items: center;
     text-align: center;
     text-decoration: none;
+    
+    transition: 0.5s;
+}
+
+.courseBox .llamanos:hover{
+    cursor: pointer;
+    box-shadow: 0px 0px 10px #000000;
+    transform: scale(1.1);
+    transition: 0.5s;
+}
+
+.courseBox .inscribete{
+    height: 100%;
+    width: 50%;
+    background-color: rgb(199, 59, 59);
+    color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    
+    transition: 0.5s;
 }
 
 .courseBox .inscribete:hover{
     cursor: pointer;
-    box-shadow: 0px 0px 10px rgb(255, 255, 255);
+    box-shadow: 0px 0px 10px rgb(0, 0, 0);
+    transform: scale(1.1);
     transition: 0.5s;
 }
 
@@ -336,7 +361,14 @@
     width: 80%;
     height: 100px;
     margin-top: 30px;
+    border: 1px solid rgb(56, 56, 56);
     display: flex;
+    
+    transition: 0.5s;
+}
+.courseEditBox:hover{
+    transform: scale(1.1);
+    transition: 0.5s;
 }
 
 .courseEditBox .image{
@@ -358,6 +390,10 @@
     font-size: 1.3em;
     color: rgb(0, 0, 0);
     text-align: center;
+}
+.courseEditBox .name a{
+   
+    color: rgb(0, 0, 0);
 }
 
 .courseEditBox .delete{
@@ -517,11 +553,14 @@
     text-decoration: none;
     color: black;
     margin-bottom: 15px;
+    
+    transition: 0.5s;
 }
 
 .cancel:hover{
     cursor: pointer;
     background-color: rgba(199, 59, 59);
+    transform: scale(1.1);
     transition: 0.5s;
     color: white;
     box-shadow: 5px 5px 15px black;
@@ -544,6 +583,8 @@
     background-color:rgb(255, 255, 255);
     margin-top: 50px;
     margin-bottom: 30px;
+    
+    border: 1px solid rgb(56, 56, 56);
 }
 
 .infoCurso .nombre{
@@ -658,7 +699,7 @@
     }
 
     to{
-        opacity: 0.9;
+        opacity: 1;
         margin-left: 0px;
     }
 }
