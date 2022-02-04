@@ -20,14 +20,14 @@ class CourseValidator {
         $array_strings =[$place,$schedule,$contact_email,$contact_telephone,$description,$web_link,$pdf_link];
 */
         $this->validate_name($name);
-        if ($start_date != "s")
+        if ($start_date != "")
             $this->validate_date($start_date, "start_date");
-        if ($end_date != "s")
+        if ($end_date != "")
             $this->validate_date($end_date, "end_date");
         if (($start_date != "" && $end_date != ""))
             $this->compare_dates($start_date, $end_date);
         foreach ($data as $key => $value) {
-            if ($value != "s" && $key != "name" && $key != "start_date" && $key != "end_date") {
+            if ($value != "" && $key != "name" && $key != "start_date" && $key != "end_date") {
                 $this->validate_string($value, $key);
             }
         }
@@ -109,7 +109,7 @@ class CourseValidator {
     }
 
     private function validate_string(String $value, $key) {
-        if (strlen($value) < Config::MAX_255) {
+        if (strlen($value) > Config::MAX_255) {
             $this->hayError = true;
             $this->crush->addMessageError(
                 $key,
