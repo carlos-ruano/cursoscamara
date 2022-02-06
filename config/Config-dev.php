@@ -12,6 +12,8 @@ class Config {
     const PASS_CHARACTER_MAX = 255;
     const PASS_CHARACTER_MIN = 4;
     const MAX_255 = 255;
+    const DNI_CH_MAX = 10;
+    const TEL_CH_MAX = 15;
     function __construct()
     {
         $this->path_base = $_SERVER["DOCUMENT_ROOT"] . "/cursoscamara/";
