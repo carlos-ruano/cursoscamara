@@ -26,6 +26,12 @@ class CoursesModel {
         $prod = $this->cnx->query($sql, [$id]);
         return !empty($prod) ? new Course($prod[0]) : null;
     }
+    function getImages() {
+
+        $sql = "SELECT `image_link` FROM courses";
+        $images = $this->cnx->query($sql);
+        return $images;
+    }
 
     function createCourse($course) {
         $sql = "INSERT INTO `courses` (`id`, `name`, `start_date`, `end_date`, `duration`, `place`, `schedule`, `contact_email`, `contact_telephone`, `description`, `web_link`, `pdf_link`, `image_link`, `status`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -46,6 +52,8 @@ class CoursesModel {
             $course->getStatus()
         ];
         $ok = $this->cnx->execute($sql, $params);
+        var_dump($ok);
+        var_dump($ok);
         return $ok ? $this->cnx->lastInsertId() : false;
     }
     function editCourse($course) {

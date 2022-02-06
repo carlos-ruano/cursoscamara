@@ -3,6 +3,7 @@ class CoursesController {
 
     function __construct() {
         $this->model = new CoursesModel();
+        $this->students_model = new StudentsModel();
     }
 
     function index() {
@@ -51,8 +52,11 @@ class CoursesController {
                                 } else {
                                     $view->errores["image"] = "El archivo seleccionado no es una imagen.";
                                 }
-                            } 
+                            }
                         }
+                    }
+                    if ($course->getImage_link() == null) {
+                        $course->setImage_link("default_img.jpg");
                     }
                     $id = $this->model->createCourse($course);
                     if ($id !== false) {
@@ -105,26 +109,30 @@ class CoursesController {
                 if ($validate->isOk()) {
                     $course = new Course($_POST);
                     $course->setId($id);
-                    
+
                     if ($_FILES["image"]["name"] != "") {
-                        
+
                         $tmp = $_FILES["image"]["tmp_name"];
                         $name = $_FILES["image"]["name"];
                         $size = $_FILES["image"]["size"];
                         $type = $_FILES["image"]["type"];
                         $path = $_SERVER["DOCUMENT_ROOT"] . "/cursoscamara/content/img/";
-                        
                         $destino = $path . "/" . $name;
                         if ($type === "image/jpeg") {
                             $ok = move_uploaded_file($tmp, $destino);
                             if ($ok) {
-                                
                                 $course->setImage_link($name);
-                                $file = $path . "/" . $courseOld->getImage_link();
-                                if (file_exists($file)) {
+                                $file = $path . $courseOld->getImage_link();
+                                $images = $this->model->getImages();
+                                $contador = 0;
+                                foreach ($images as $imagene) {
+                                    if ($imagene["image_link"] == $courseOld->getImage_link()) {
+                                        $contador++;
+                                    }
+                                }
+                                if ($contador == 1 && $courseOld->getImage_link() != "default_img.jpg") {
                                     unlink($file);
                                 }
-
                                 $view->image = Config::PATH_IMG . "/" . $course->getImage_link();
                             }
                         } else {
@@ -132,14 +140,16 @@ class CoursesController {
                         }
                     } else {
                         $course->setImage_link($courseOld->getImage_link());
+                        if ($course->getImage_link() == null) {
+                            $course->setImage_link("default_img.jpg");
+                        }
                         $view->imagen = Config::PATH_IMG . $courseOld->getImage_link();
                     }
 
                     $id = $this->model->editCourse($course);
                     if ($id !== false) {
                         echo "Se ha actualizado el curso";
-                        header("location:" . Config::URL_BASE . "courses/editCourses");
-                        
+                        //header("location:" . Config::URL_BASE . "courses/editCourses");                 
                     }
                 }
             } else {
@@ -166,6 +176,7 @@ class CoursesController {
             $view->image = Config::PATH_IMG . $courseOld->getImage_link();
             $view->errores = $errores;
         } finally {
+            $view->url_delete = Config::URL_BASE.'courses/delete/'.$courseOld->getId();
             $view->urlBack = Config::URL_BASE . "courses/editCourses";
             $view->render('edit_course');
         }
@@ -179,6 +190,48 @@ class CoursesController {
         $view->urlCourseInfo = Config::URL_BASE . "courses/info/" . $id;
         $view->render('info');
     }
+
+    function listado(int $id) {
+        if (!($_SESSION["verified"] && $_SESSION["role"] === 'admin')) {
+            header("location:" . Config::URL_BASE);
+        }
+        $view = new View();
+        $course = $this->model->getCourse($id);
+        $students = $this->students_model->getStudentsByCourse($id);
+        $view->students = $students;
+        $view->course = $course;
+        $view->urlReturn = Config::URL_BASE."courses/editCourses/";
+        $view->urlCourseInfo = Config::URL_BASE . "courses/info/" . $id;
+        $view->render('listado_by_course');
+    }
+    function add_alumno(int $course_id){
+        if (!($_SESSION["verified"] && $_SESSION["role"] === 'admin')) {
+            header("location:" . Config::URL_BASE);
+        }
+        $view = new View();
+        try {
+            if (isset($_POST["enviar"])) {
+                $validate = new StudentValidator($_POST);
+
+                if ($validate->isOk()) {
+                    $student = new Student($_POST);
+                    $student_id = $this->students_model->createStudent($student);
+                    if ($student_id !== false) {
+                        $this->students_model->setStudentInCourse($student_id,$course_id);
+                        header("location:" . Config::URL_BASE . "courses/listado/".$course_id);
+                    }
+                    $_POST = [];
+                }
+            }
+        } catch (StudentValidatorException $e) {
+            $errores = $e->getMessagesErrores();
+            $view->errores = $errores;
+        } finally {
+            $view->urlBack = Config::URL_BASE . "students";
+            $view->render('newstudent');
+        }
+    }
+
 
     function delete(int $id) {
         if (!($_SESSION["verified"] && $_SESSION["role"] === 'admin')) {
@@ -207,7 +260,21 @@ class CoursesController {
             header("location: " . Config::URL_BASE . "courses/editCourses");
         }
         try {
+            $courseOld = $this->model->getCourse($id);
+            $path = $_SERVER["DOCUMENT_ROOT"] . "/cursoscamara/content/img/";
+            $file = $path . $courseOld->getImage_link();
+            $images = $this->model->getImages();
+            $contador = 0;
+            foreach ($images as $imagene) {
+                if ($imagene["image_link"] == $courseOld->getImage_link()) {
+                    $contador++;
+                }
+            }
+            if ($contador == 1 && $courseOld->getImage_link() != "default_img.jpg") {
+                unlink($file);
+            }
             $ok = $this->model->deleteCourse($id);
+
             if ($ok) {
                 header("location: " . Config::URL_BASE . "courses/editCourses");
             }
