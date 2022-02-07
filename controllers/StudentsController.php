@@ -110,8 +110,8 @@ class StudentsController {
         $student = $this->model->getStudent($id);
         $view->student = $student;
         $view->urlReturn = Config::URL_BASE;
-        $view->urlCourseInfo = Config::URL_BASE . "courses/info/" . $id;
-        $view->render('info_student');
+        $view->urlCourseInfo = Config::URL_BASE . "students/info/" . $id;
+        $view->render('infoStudent');
     }
 
     function delete(int $id) {
