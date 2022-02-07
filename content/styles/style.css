@@ -362,6 +362,7 @@
     align-items: center;
     font-size: 1.2em;
     text-decoration: none;
+    text-align: center;
 }
 
 .courseEditBox .delete:hover{
@@ -725,6 +726,30 @@
   transition: 0.5s;
 }
 
+.fa-trash-alt{
+    color: rgba(199, 59, 59);
+}
+
+.fa-edit{
+    color: #ffeda6;
+}
+
+.fa-trash-alt:hover{
+    cursor: pointer;
+    transform: scale(1.5);
+    transition: 0.5s;
+}
+
+.fa-edit:hover{
+    cursor: pointer;
+    transform: scale(1.5);
+    transition: 0.5s;
+}
+
+.img_listado img{
+    width: 100%;
+}
+
 
 
 /*-----------------------------------KEYFRAMES------------------------------------------*/
@@ -929,6 +954,10 @@
 
     .login{
         margin-right: 0px;
+    }
+
+    .img_listado{
+        width: 95%;
     }
 }
 

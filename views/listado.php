@@ -22,8 +22,8 @@
                 <div><?= $student->getPice() ?? '' ?></div>
                 <div><?= $student->getOrientation() ?? '' ?></div>
                 <div><?= $student->getObservations() ?? '' ?></div>
-                <div><a href="<?= Config::URL_BASE.'students/delete/'.$student->getId()?>" class="delete">Borrar</a></div>
-                <div><a href="<?= Config:: URL_BASE . 'students/edit/' . $student->getId() ?>" class="edit">Editar</a></div>
+                <div><a href="<?= Config::URL_BASE.'students/delete/'.$student->getId()?>" class="delete"><i class="fas fa-trash-alt"></i></a></div>
+                <div><a href="<?= Config:: URL_BASE . 'students/edit/' . $student->getId() ?>" class="edit"><i class="fas fa-edit"></i></a></div>
             </div>
         <?php } ?>
     </div>
