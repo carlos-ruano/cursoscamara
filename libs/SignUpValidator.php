@@ -5,10 +5,8 @@ class SignUpValidatorException extends FormValidatorException {
 
 class SignUpValidator {
     function __construct(array $data) {
-        var_dump($data);
         $this->crush = new SignUpValidatorException('Datos Incorrectos');
         $this->hayError = false;
-
         $this->validateName($data["name"]);
         $this->validateEmail($data["email"]);
         $this->validatePassword($data["password"],$data["pass2"]);
@@ -20,13 +18,13 @@ class SignUpValidator {
         if ($name === '') {
             $this->hayError = true;
             $this->crush->addMessageError(
-                'nombre',
+                'name',
                 'El campo no puede ser vacio.'
             );
         } else if (strlen($name) > Config::NAME_CHARACTER_MAX) {
             $this->hayError = true;
             $this->crush->addMessageError(
-                'nombre',
+                'name',
                 'El campo es demasiado largo. Máximo 255 caracteres.'
             );
         }

@@ -3,13 +3,10 @@ class MySqlDBException extends Exception {
 }
 
 class MySqlDB {
-    const DNS = "mysql:host=localhost;dbname=cursoscamara;port=3306;charset=UTF8";
-    const USUARIO = 'root';
-    const PASS = '';
 
     function __construct() {
         try {
-            $conexion = new PDO(self::DNS, self::USUARIO, self::PASS);
+            $conexion = new PDO(ConfigDB::DNS, ConfigDB::USER, ConfigDB::PASS);
             $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $this->db = $conexion;
         } catch (PDOException $e) {

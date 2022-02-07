@@ -23,7 +23,7 @@ class SignUpController {
                     }
                 }
             }
-        } catch (RegistroFormValidatorException $e) {
+        } catch (SignUpValidatorException $e) {
             $errores = $e->getMessagesErrores();
             $vista->errores = $errores;
         } catch(MySqlDBException $e){

@@ -1,11 +1,12 @@
 <?php
     require_once "./libs/Autoload.php";
     Autoload::init();
-    require_once "./config/Config.php";
+    require_once "./config/Config-dev.php";
+    require_once "./config/ConfigDB.php";
     session_start();
     require "./views/header.php";
-    if(isset($_GET["url"])){
-        $url = $_GET["url"];
+    $url = substr($_SERVER["REQUEST_URI"],14);
+    if($url != ""){
         $router = new Router($url);
     } else {
         $ctrl = new HomeController();
