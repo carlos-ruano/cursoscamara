@@ -750,6 +750,16 @@
     width: 100%;
 }
 
+.listado_info{
+    display: none;
+    color: blue;
+}
+
+.listado_opciones{
+    display: flex;
+    justify-content: flex-end;
+}
+
 
 
 /*-----------------------------------KEYFRAMES------------------------------------------*/
@@ -863,6 +873,28 @@
         margin-top: 0px;
         margin-bottom: 50px;
         text-align: justify;
+    }
+
+    .listado_responsive{
+        width: 60%;
+    }
+
+    .listado_responsive2{
+        display: none;
+    }
+
+    .listado_info{
+        display: inline-block;
+    }
+
+    .datos_alumnos{
+        display: grid;
+        grid-template-columns: 10% 30% 50% 5% 10%;
+    }
+
+    .div_info_student{
+        width: 90%;
+        
     }
 }
 
