@@ -1,7 +1,12 @@
 <div class="generalContainer">
     <h2>Editar curso</h2>
+    <div class="divBorrar">
+        <a href="<?= $this->urlBack ?>" class="cancel">Volver</a>
+        <a href="<?= $this->url_delete ?>" class="botonBorrar">Borrar curso</a>
+    </div>
     <?php
-        echo "<a class='cancel' href='" . $this->urlBack . "'>Volver</a><br><br>";
-        include "course_form.php"; 
+    include "course_form.php";
     ?>
+
+    
 </div>
