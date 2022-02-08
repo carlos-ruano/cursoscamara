@@ -50,9 +50,15 @@ class Router {
             ["pattern" => "students/delete/:id", "metodo" => "GET", "controller" => "StudentsController", "accion" => "delete"],
             ["pattern" => "students/deletetotal/:id", "metodo" => "GET", "controller" => "StudentsController", "accion" => "deletetotal"],
             
-            ["pattern" => "courses/listado/:id", "metodo" => "GET", "controller" => "CoursesController", "accion" => "listado"],
-            ["pattern" => "courses/add_alumno/:id", "metodo" => "GET", "controller" => "CoursesController", "accion" => "add_alumno"],
-            ["pattern" => "courses/add_alumno/:id", "metodo" => "POST", "controller" => "CoursesController", "accion" => "add_alumno"],
+            ["pattern" => "courses/listado/:id", "metodo" => "GET", "controller" => "StudentsCoursesController", "accion" => "listado"],
+            ["pattern" => "courses/add_alumno/:id", "metodo" => "GET", "controller" => "StudentsCoursesController", "accion" => "add_alumno"],
+            ["pattern" => "courses/add_alumno/:id", "metodo" => "POST", "controller" => "StudentsCoursesController", "accion" => "add_alumno"],
+            ["pattern" => "students/deleteStudentFromCourse/:student_id/:course_id", "metodo" => "GET", "controller" => "StudentsCoursesController", "accion" => "deleteStudentFromCourse"],
+            ["pattern" => "students/deleteStudentFromCourse/:student_id/:course_id", "metodo" => "POST", "controller" => "StudentsCoursesController", "accion" => "deleteStudentFromCourse"],
+            ["pattern" => "students/deleteOnlyFromCourse/:student_id/:course_id", "metodo" => "GET", "controller" => "StudentsCoursesController", "accion" => "deleteOnlyFromCourse"],
+            ["pattern" => "students/deleteOnlyFromCourse/:student_id/:course_id", "metodo" => "POST", "controller" => "StudentsCoursesController", "accion" => "deleteOnlyFromCourse"],
+            ["pattern" => "students/deleteStudentComplete/:student_id/:course_id", "metodo" => "GET", "controller" => "StudentsCoursesController", "accion" => "deleteStudentComplete"],
+            ["pattern" => "students/deleteStudentComplete/:student_id/:course_id", "metodo" => "POST", "controller" => "StudentsCoursesController", "accion" => "deleteStudentComplete"],
             
             ["pattern" => "login/cerrar", "metodo" => "GET", "controller" => "LoginController", "accion" => "cerrar"],
             ["pattern" => "login", "metodo" => "GET", "controller" => "LoginController", "accion" => "index"],
