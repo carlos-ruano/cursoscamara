@@ -12,7 +12,7 @@ class StudentsController {
         $view = new View();
         $students = $this->model->getStudents();
         $view->students = $students;
-        $view->urlReturn = Config::URL_BASE;
+        $view->urlReturn = Config::URL_BASE."courses/editCourses";
         $view->url_new_student = Config::URL_BASE . "students/new";
         $view->render('students');
     }
@@ -43,19 +43,6 @@ class StudentsController {
             $view->render('newstudent');
         }
     }
-
-    // function editStudents() {
-    //     if (!($_SESSION["verified"] && $_SESSION["role"] === 'admin')) {
-    //         header("location:" . Config::URL_BASE);
-    //     }
-    //     $view = new View();
-    //     $students = $this->model->getStudents();
-    //     $view->students = $students;
-    //     $view->urlReturn = Config::URL_BASE;
-    //     $view->url_newCourse = Config::URL_BASE . "students/new";
-    //     $view->render('editStudents');
-    // }
-
 
     function edit(int $id) {
         if (!($_SESSION["verified"] && $_SESSION["role"] === 'admin')) {

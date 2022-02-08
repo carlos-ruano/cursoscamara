@@ -200,7 +200,7 @@ class CoursesController {
         $students = $this->students_model->getStudentsByCourse($id);
         $view->students = $students;
         $view->course = $course;
-        $view->urlReturn = Config::URL_BASE."courses/editCourses/";
+        $view->urlReturn = Config::URL_BASE."courses/editCourses";
         $view->urlCourseInfo = Config::URL_BASE . "courses/info/" . $id;
         $view->render('listado_by_course');
     }
