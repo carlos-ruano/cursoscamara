@@ -5,17 +5,12 @@
     require_once "./config/ConfigDB.php";
     session_start();
     require "./views/header.php";
-
-    
-
-    // var_dump($_SERVER);
-    $method = $_SERVER["REQUEST_METHOD"];
     $url = substr($_SERVER["REQUEST_URI"],14);
     if($url != ""){
-        $router = new Router($method, $url);
-        $router->run();
+        $router = new Router($url);
     } else {
         $ctrl = new HomeController();
         $ctrl->index();
     };
     
+    require "./views/footer.php";
