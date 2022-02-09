@@ -32,7 +32,8 @@ class StudentsCoursesController {
                     $student = new Student($_POST);
                     $student_id = $this->students_model->createStudent($student);
                     if ($student_id !== false) {
-                        $this->students_model->setStudentInCourse($student_id, $course_id);
+                        $ok=$this->students_model->setStudentInCourse($student_id, $course_id);
+                        if ($ok !== false) 
                         header("location:" . Config::URL_BASE . "courses/listado/" . $course_id);
                     }
                     $_POST = [];
