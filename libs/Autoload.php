@@ -3,19 +3,34 @@
 class Autoload {
 
     public static function init() {
-        spl_autoload_register(function ($nombre_clase) {
+        spl_autoload_register(function ($name_space) {
+
+            $array = explode("\\", $name_space);
+            $len = count($array);
+            $class_name = $array[$len - 1];
+
             $existe = false;
             $files = [
-                "controller" => './controllers/' . $nombre_clase . '.php',
-                "libs" => './libs/' . $nombre_clase . '.php',
-                "models" => './models/' . $nombre_clase . '.php',
-                "router" => './router/' . $nombre_clase . '.php',
-                "entities" => './entities/' . $nombre_clase . '.php'
+                "controller" => './controllers/' . $class_name . '.php',
+                "libs" => './libs/' . $class_name . '.php',
+                "models" => './models/' . $class_name . '.php',
+                "router" => './router/' . $class_name . '.php',
+                "entities" => './entities/' . $class_name . '.php',
+                "jwt" => './jwt/' . $class_name . '.php'
             ];
+
             foreach ($files as $file) {
                 if (file_exists($file)) {
                     require_once $file;
                     $existe = true;
+                }
+            }
+            if ($len == 3) {
+                if ($array[0] == "Firebase" && $array[1] == "JWT") {
+                    require_once $files["jwt"];
+                    $existe = true;
+                } else {
+                    $existe = false;
                 }
             }
             if (!$existe) {

@@ -7,9 +7,8 @@ class StudentsCoursesController {
     }
 
     function listado(int $id) {
-        if (!($_SESSION["verified"] && $_SESSION["role"] === 'admin')) {
-            header("location:" . Config::URL_BASE);
-        }
+        VerificarToken::comprobarAdmin();
+
         $view = new View();
         $course = $this->courses_model->getCourse($id);
         $students = $this->students_model->getStudentsByCourse($id);
@@ -20,9 +19,8 @@ class StudentsCoursesController {
         $view->render('listado_by_course');
     }
     function add_alumno(int $course_id) {
-        if (!($_SESSION["verified"] && $_SESSION["role"] === 'admin')) {
-            header("location:" . Config::URL_BASE);
-        }
+        VerificarToken::comprobarAdmin();
+
         $view = new View();
         try {
             if (isset($_POST["enviar"])) {
@@ -49,9 +47,8 @@ class StudentsCoursesController {
     }
 
     function deleteStudentFromCourse($params) {
-        if (!($_SESSION["verified"] && $_SESSION["role"] === 'admin')) {
-            header("location:" . Config::URL_BASE);
-        }
+        VerificarToken::comprobarAdmin();
+
 
         if (!is_array($params)) {
             header("location: " . Config::URL_BASE . "courses/editCourses");
@@ -80,9 +77,8 @@ class StudentsCoursesController {
         }
     }
     function deleteOnlyFromCourse($params) {
-        if (!($_SESSION["verified"] && $_SESSION["role"] === 'admin')) {
-            header("location:" . Config::URL_BASE);
-        }
+        VerificarToken::comprobarAdmin();
+
         if (!is_array($params)) {
             header("location: " . Config::URL_BASE . "courses/editCourses");
         }
@@ -99,9 +95,8 @@ class StudentsCoursesController {
         }
     }
     function deleteStudentComplete($params) {
-        if (!($_SESSION["verified"] && $_SESSION["role"] === 'admin')) {
-            header("location:" . Config::URL_BASE);
-        }
+        VerificarToken::comprobarAdmin();
+
         if (!is_array($params)) {
             header("location: " . Config::URL_BASE . "courses/editCourses");
         }

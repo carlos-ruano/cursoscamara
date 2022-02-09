@@ -8,13 +8,6 @@ class CoursesController {
 
     function index() {
         $view = new View();
-        //$autenticado = isset($_SESSION["autenticado"]);
-        // if ($autenticado) {
-        //     $rol = $_SESSION["rol"];
-        //     $view->classEnlaces = $autenticado && $rol !== 'admin' ? 'ocultar' : '';
-        // } else {
-        //     $view->classEnlaces = 'ocultar';
-        // }
         $courses = $this->model->getCourses();
         $view->courses = $courses;
         $view->urlReturn = Config::URL_BASE;
@@ -23,9 +16,8 @@ class CoursesController {
     }
 
     function new() {
-        if (!($_SESSION["verified"] && $_SESSION["role"] === 'admin')) {
-            header("location:" . Config::URL_BASE);
-        }
+        VerificarToken::comprobarAdmin();
+
         $view = new View();
         try {
             if (isset($_POST["enviar"])) {
@@ -75,9 +67,8 @@ class CoursesController {
     }
 
     function editCourses() {
-        if (!($_SESSION["verified"] && $_SESSION["role"] === 'admin')) {
-            header("location:" . Config::URL_BASE);
-        }
+        VerificarToken::comprobarAdmin();
+
         $view = new View();
         $courses = $this->model->getCourses();
         $view->courses = $courses;
@@ -88,9 +79,8 @@ class CoursesController {
 
 
     function edit(int $id) {
-        if (!($_SESSION["verified"] && $_SESSION["role"] === 'admin')) {
-            header("location:" . Config::URL_BASE);
-        }
+        VerificarToken::comprobarAdmin();
+
 
         if (!is_numeric($id)) {
             header("location: " . Config::URL_BASE . "courses/editCourses");
@@ -192,9 +182,7 @@ class CoursesController {
     }
 
     function delete(int $id) {
-        if (!($_SESSION["verified"] && $_SESSION["role"] === 'admin')) {
-            header("location:" . Config::URL_BASE);
-        }
+        VerificarToken::comprobarAdmin();
 
         if (!is_numeric($id)) {
             header("location: " . Config::URL_BASE . "courses/editCourses");
@@ -211,9 +199,8 @@ class CoursesController {
         }
     }
     function deletetotal(int $id) {
-        if (!($_SESSION["verified"] && $_SESSION["role"] === 'admin')) {
-            header("location:" . Config::URL_BASE);
-        }
+        VerificarToken::comprobarAdmin();
+
         if (!is_numeric($id)) {
             header("location: " . Config::URL_BASE . "courses/editCourses");
         }

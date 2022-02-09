@@ -7,9 +7,8 @@ class SignUpController {
     }
 
     function index() {
-        if (!($_SESSION["verified"] && $_SESSION["role"] === 'admin')) {
-            header("location:" . Config::URL_BASE);
-        }
+        VerificarToken::comprobarAdmin();
+
         $vista = new View;
         try {
             if (isset($_POST["enviar"])) {

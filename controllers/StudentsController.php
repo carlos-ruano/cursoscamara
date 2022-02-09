@@ -8,9 +8,8 @@ class StudentsController {
     }
 
     function index() {
-        if (!($_SESSION["verified"] && $_SESSION["role"] === 'admin')) {
-            header("location:" . Config::URL_BASE);
-        }
+        VerificarToken::comprobarAdmin();
+
         $view = new View();
         $students = $this->model->getStudents();
         $view->students = $students;
@@ -20,9 +19,8 @@ class StudentsController {
     }
 
     function new() {
-        if (!($_SESSION["verified"] && $_SESSION["role"] === 'admin')) {
-            header("location:" . Config::URL_BASE);
-        }
+        VerificarToken::comprobarAdmin();
+
         $view = new View();
         try {
             $courses = $this->courses_model->getCourses();
@@ -56,9 +54,8 @@ class StudentsController {
     }
 
     function edit(int $id) {
-        if (!($_SESSION["verified"] && $_SESSION["role"] === 'admin')) {
-            header("location:" . Config::URL_BASE);
-        }
+        VerificarToken::comprobarAdmin();
+
 
         if (!is_numeric($id)) {
             header("location: " . Config::URL_BASE . "courses/editCourses");
@@ -113,6 +110,8 @@ class StudentsController {
     }
 
     function info(int $id) {
+        VerificarToken::comprobarAdmin();
+
         $view = new View();
         $student = $this->model->getStudent($id);
         $view->student = $student;
@@ -122,9 +121,7 @@ class StudentsController {
     }
 
     function delete(int $id) {
-        if (!($_SESSION["verified"] && $_SESSION["role"] === 'admin')) {
-            header("location:" . Config::URL_BASE);
-        }
+        VerificarToken::comprobarAdmin();
 
         if (!is_numeric($id)) {
             header("location: " . Config::URL_BASE . "courses/editCourses");
@@ -141,9 +138,8 @@ class StudentsController {
         }
     }
     function deletetotal(int $id) {
-        if (!($_SESSION["verified"] && $_SESSION["role"] === 'admin')) {
-            header("location:" . Config::URL_BASE);
-        }
+        VerificarToken::comprobarAdmin();
+
         if (!is_numeric($id)) {
             header("location: " . Config::URL_BASE . "courses/editCourses");
         }
