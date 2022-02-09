@@ -3,6 +3,8 @@ class StudentsController {
 
     function __construct() {
         $this->model = new StudentsModel();
+        $this->courses_model = new CoursesModel();
+
     }
 
     function index() {
@@ -23,13 +25,20 @@ class StudentsController {
         }
         $view = new View();
         try {
+            $courses = $this->courses_model->getCourses();
+            $coursesFromStudent = [""];
             if (isset($_POST["enviar"])) {
                 $validate = new StudentValidator($_POST);
-
                 if ($validate->isOk()) {
                     $student = new Student($_POST);
                     $id = $this->model->createStudent($student);
                     if ($id !== false) {
+                        $coursesFromStudent = $this->model->getCoursesByStudent($id);
+                        if($_POST["curso"]!="" ||  !in_array($coursesFromStudent,$_POST["curso"])){
+                            $ok=$this->model->setStudentInCourse($id, $_POST["curso"]);
+                            if ($ok !== false) 
+                            echo "Se ha actualizado el estudiante";
+                        }
                         header("location:" . Config::URL_BASE . "courses/editCourses");
                     }
                     $_POST = [];
@@ -39,6 +48,8 @@ class StudentsController {
             $errores = $e->getMessagesErrores();
             $view->errores = $errores;
         } finally {
+            $view->coursesFromStudent=$coursesFromStudent;
+            $view->courses=$courses;
             $view->urlBack = Config::URL_BASE . "students";
             $view->render('newstudent');
         }
@@ -56,6 +67,9 @@ class StudentsController {
         $view = new View();
         try {
             $studentOld = $this->model->getStudent($id);
+            $courses = $this->courses_model->getCourses();
+            $coursesFromStudent = $this->model->getCoursesByStudent($id);
+            
             if (is_null($studentOld)) {
                 header("location:" . Config::URL_BASE . "courses/editCourses");
             }
@@ -66,8 +80,12 @@ class StudentsController {
                     $student->setId($id);
                     $id = $this->model->updateStudent($student);
                     if ($id !== false) {
-                        echo "Se ha actualizado el estudiante";
-                        //header("location:" . Config::URL_BASE . "courses/editCourses");                 
+                        if($_POST["curso"]!="" ||  !in_array($coursesFromStudent,$_POST["curso"])){
+                            $ok=$this->model->setStudentInCourse($student->getId(), $_POST["curso"]);
+                            if ($ok !== false) 
+                            echo "Se ha actualizado el estudiante";
+                        }
+                                         
                     }
                 }
             } else {
@@ -87,6 +105,8 @@ class StudentsController {
             $errores = $e->getMessagesErrores();
             $view->errores = $errores;
         } finally {
+            $view->coursesFromStudent=$coursesFromStudent;
+            $view->courses=$courses;
             $view->urlBack = Config::URL_BASE . "students";
             $view->render('edit_student');
         }

@@ -191,48 +191,6 @@ class CoursesController {
         $view->render('info');
     }
 
-    function listado(int $id) {
-        if (!($_SESSION["verified"] && $_SESSION["role"] === 'admin')) {
-            header("location:" . Config::URL_BASE);
-        }
-        $view = new View();
-        $course = $this->model->getCourse($id);
-        $students = $this->students_model->getStudentsByCourse($id);
-        $view->students = $students;
-        $view->course = $course;
-        $view->urlReturn = Config::URL_BASE."courses/editCourses";
-        $view->urlCourseInfo = Config::URL_BASE . "courses/info/" . $id;
-        $view->render('listado_by_course');
-    }
-    function add_alumno(int $course_id){
-        if (!($_SESSION["verified"] && $_SESSION["role"] === 'admin')) {
-            header("location:" . Config::URL_BASE);
-        }
-        $view = new View();
-        try {
-            if (isset($_POST["enviar"])) {
-                $validate = new StudentValidator($_POST);
-
-                if ($validate->isOk()) {
-                    $student = new Student($_POST);
-                    $student_id = $this->students_model->createStudent($student);
-                    if ($student_id !== false) {
-                        $this->students_model->setStudentInCourse($student_id,$course_id);
-                        header("location:" . Config::URL_BASE . "courses/listado/".$course_id);
-                    }
-                    $_POST = [];
-                }
-            }
-        } catch (StudentValidatorException $e) {
-            $errores = $e->getMessagesErrores();
-            $view->errores = $errores;
-        } finally {
-            $view->urlBack = Config::URL_BASE . "students";
-            $view->render('newstudent');
-        }
-    }
-
-
     function delete(int $id) {
         if (!($_SESSION["verified"] && $_SESSION["role"] === 'admin')) {
             header("location:" . Config::URL_BASE);

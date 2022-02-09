@@ -67,7 +67,7 @@ class Router {
             ["pattern" => "signup", "metodo" => "GET", "controller" => "SignUpController", "accion" => "index"],
             ["pattern" => "signup", "metodo" => "POST", "controller" => "SignUpController", "accion" => "index"]
 
-
+            
         ];
     }
 
