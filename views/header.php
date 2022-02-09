@@ -21,7 +21,7 @@
         </a>
 
 
-        <?php if (isset($_SESSION["verified"])) { ?>
+        <?php if (isset($_SESSION["token"])) { ?>
             <div class="admin_nav">
                 <div>Bienvenido, <?= $_SESSION["name"] ?? '' ?></div>
                 <div>

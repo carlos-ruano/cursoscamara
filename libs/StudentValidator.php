@@ -17,7 +17,7 @@ class StudentValidator {
 
 
         $this->validate_name($name);
-        $this->validate_name($surname);
+        $this->validate_surname($surname);
 
         if ($dni != "")
             $this->validate_dni($dni);
@@ -48,6 +48,24 @@ class StudentValidator {
             $this->hayError = true;
             $this->crush->addMessageError(
                 'name',
+                'El nombre es demasiado largo. Máximo '
+                    . Config::MAX_255
+                    . ' caracteres.'
+            );
+        }
+    }
+
+    private function validate_surname(String $surname) {
+        if (strlen($surname) === 0) {
+            $this->hayError = true;
+            $this->crush->addMessageError(
+                'surname',
+                'El nombre no puede ser vacio.'
+            );
+        } else if (strlen($surname) > Config::MAX_255) {
+            $this->hayError = true;
+            $this->crush->addMessageError(
+                'surname',
                 'El nombre es demasiado largo. Máximo '
                     . Config::MAX_255
                     . ' caracteres.'
