@@ -18,3 +18,4 @@
         $ctrl->index();
     };
     
+    require "./views/footer.php";
