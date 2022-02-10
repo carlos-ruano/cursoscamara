@@ -115,7 +115,7 @@ class StudentsController {
         $view = new View();
         $student = $this->model->getStudent($id);
         $view->student = $student;
-        $view->urlReturn = Config::URL_BASE;
+        $view->urlReturn = Config::URL_BASE . "students";
         $view->urlCourseInfo = Config::URL_BASE . "students/info/" . $id;
         $view->render('infoStudent');
     }
