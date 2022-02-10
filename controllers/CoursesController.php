@@ -8,11 +8,23 @@ class CoursesController {
 
     function index() {
         $view = new View();
-        $courses = $this->model->getCourses();
-        $view->courses = $courses;
-        $view->urlReturn = Config::URL_BASE;
-        $view->urlEditCourses = Config::URL_BASE . "courses/editCourses";
-        $view->render('courses');
+        try {
+            $courses = $this->model->getCourses();
+            $coursesOK = [];
+            foreach ($courses as $course) {
+                if ($course->getStatus() === "disponible") {
+                    $coursesOK[] = $course;
+                }
+            }
+        } catch (CourseValidatorException $e) {
+            $errores = $e->getMessagesErrores();
+            $view->errores = $errores;
+        } finally {
+            $view->courses = $coursesOK;
+            $view->urlReturn = Config::URL_BASE;
+            $view->urlEditCourses = Config::URL_BASE . "courses/editCourses";
+            $view->render('courses');
+        }
     }
 
     function new() {
@@ -68,20 +80,24 @@ class CoursesController {
 
     function editCourses() {
         VerificarToken::comprobarAdmin();
-
         $view = new View();
-        $courses = $this->model->getCourses();
-        $view->courses = $courses;
-        $view->urlReturn = Config::URL_BASE;
-        $view->url_newCourse = Config::URL_BASE . "courses/new";
-        $view->render('editCourses');
+        try {
+            $courses = $this->model->getCourses();
+        } catch (CourseValidatorException $e) {
+            $errores = $e->getMessagesErrores();
+            $view->errores = $errores;
+            header("location: " . Config::URL_BASE);
+        } finally {
+            $view->courses = $courses;
+            $view->urlReturn = Config::URL_BASE;
+            $view->url_newCourse = Config::URL_BASE . "courses/new";
+            $view->render('editCourses');
+        }
     }
 
 
     function edit(int $id) {
         VerificarToken::comprobarAdmin();
-
-
         if (!is_numeric($id)) {
             header("location: " . Config::URL_BASE . "courses/editCourses");
         }
@@ -90,7 +106,7 @@ class CoursesController {
         try {
             $courseOld = $this->model->getCourse($id);
             if (is_null($courseOld)) {
-                header("location:" . Config::URL_BASE . "courses/editCourses");
+                header("location:" . Config::URL_BASE);
             }
             if (isset($_POST["enviar"])) {
                 //var_dump($_POST);
@@ -166,7 +182,7 @@ class CoursesController {
             $view->image = Config::PATH_IMG . $courseOld->getImage_link();
             $view->errores = $errores;
         } finally {
-            $view->url_delete = Config::URL_BASE.'courses/delete/'.$courseOld->getId();
+            $view->url_delete = Config::URL_BASE . 'courses/delete/' . $courseOld->getId();
             $view->urlBack = Config::URL_BASE . "courses/editCourses";
             $view->render('edit_course');
         }
@@ -174,11 +190,23 @@ class CoursesController {
 
     function info(int $id) {
         $view = new View();
-        $course = $this->model->getCourse($id);
-        $view->course = $course;
-        $view->urlReturn = Config::URL_BASE;
-        $view->urlCourseInfo = Config::URL_BASE . "courses/info/" . $id;
-        $view->render('info');
+        try {
+            $course = $this->model->getCourse($id);
+            if (is_null($course)) {
+                header("location:" . Config::URL_BASE);
+            }
+            if ($course->getStatus() != "disponible") {
+                VerificarToken::comprobarAdmin();
+            }
+        } catch (CourseValidatorException $e) {
+            $errores = $e->getMessagesErrores();
+            $view->errores = $errores;
+        } finally {
+            $view->course = $course;
+            $view->urlReturn = Config::URL_BASE;
+            $view->urlCourseInfo = Config::URL_BASE . "courses/info/" . $id;
+            $view->render('info');
+        }
     }
 
     function delete(int $id) {

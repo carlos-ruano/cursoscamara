@@ -47,9 +47,9 @@ class LoginController {
         }
     }
     function cerrar(){
-        //if(isset($_SESSION["verified"])){
+        if(isset($_SESSION["token"])){
             session_destroy();
             header("location:".Config::URL_BASE);
-       // }
+       }
     }
 }
