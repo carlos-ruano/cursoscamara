@@ -1,6 +1,6 @@
 <script type="text/javascript">
     window.onload = function () {
-        document.getElementById('inicio').style.backgroundImage = "url('http://localhost/cursoscamara/content/img/fondo1.jpeg')";
+        document.getElementById('inicio').style.backgroundImage = "url('<?=Config::URL_BASE?>content/img/fondo1.jpeg')";
         var rndImages = [
                 "https://camaratoledo.com/wp-content/uploads/2020/04/vivero-empresas-toledo-01.jpg",
                 "https://camaratoledo.com/wp-content/uploads/2020/04/vivero-empresas-toledo-02.jpg",
