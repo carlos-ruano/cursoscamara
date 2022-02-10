@@ -7,6 +7,6 @@ class View {
 
     function render($page) {
         $path= new Config();
-        require $path->path_base . "views/" . $page . "_view.php";
+        require $_SERVER["DOCUMENT_ROOT"] . "/cursoscamara/views/" . $page . "_view.php";
     }
 }
