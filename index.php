@@ -7,8 +7,7 @@
     require "./views/header.php";
 
     
-
-    // var_dump($_SERVER);
+    //var_dump($_SERVER);
     $method = $_SERVER["REQUEST_METHOD"];
     $url = substr($_SERVER["REQUEST_URI"],14);
     if($url != ""){

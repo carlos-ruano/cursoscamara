@@ -3,12 +3,13 @@ class StudentsController {
 
     function __construct() {
         $this->model = new StudentsModel();
+        $this->courses_model = new CoursesModel();
+
     }
 
     function index() {
-        if (!($_SESSION["verified"] && $_SESSION["role"] === 'admin')) {
-            header("location:" . Config::URL_BASE);
-        }
+        VerificarToken::comprobarAdmin();
+
         $view = new View();
         $students = $this->model->getStudents();
         $view->students = $students;
@@ -18,18 +19,24 @@ class StudentsController {
     }
 
     function new() {
-        if (!($_SESSION["verified"] && $_SESSION["role"] === 'admin')) {
-            header("location:" . Config::URL_BASE);
-        }
+        VerificarToken::comprobarAdmin();
+
         $view = new View();
         try {
+            $courses = $this->courses_model->getCourses();
+            $coursesFromStudent = [""];
             if (isset($_POST["enviar"])) {
                 $validate = new StudentValidator($_POST);
-
                 if ($validate->isOk()) {
                     $student = new Student($_POST);
                     $id = $this->model->createStudent($student);
                     if ($id !== false) {
+                        $coursesFromStudent = $this->model->getCoursesByStudent($id);
+                        if($_POST["curso"]!="" ||  !in_array($coursesFromStudent,$_POST["curso"])){
+                            $ok=$this->model->setStudentInCourse($id, $_POST["curso"]);
+                            if ($ok !== false) 
+                            echo "Se ha actualizado el estudiante";
+                        }
                         header("location:" . Config::URL_BASE . "courses/editCourses");
                     }
                     $_POST = [];
@@ -39,15 +46,16 @@ class StudentsController {
             $errores = $e->getMessagesErrores();
             $view->errores = $errores;
         } finally {
+            $view->coursesFromStudent=$coursesFromStudent;
+            $view->courses=$courses;
             $view->urlBack = Config::URL_BASE . "students";
             $view->render('newstudent');
         }
     }
 
     function edit(int $id) {
-        if (!($_SESSION["verified"] && $_SESSION["role"] === 'admin')) {
-            header("location:" . Config::URL_BASE);
-        }
+        VerificarToken::comprobarAdmin();
+
 
         if (!is_numeric($id)) {
             header("location: " . Config::URL_BASE . "courses/editCourses");
@@ -56,6 +64,9 @@ class StudentsController {
         $view = new View();
         try {
             $studentOld = $this->model->getStudent($id);
+            $courses = $this->courses_model->getCourses();
+            $coursesFromStudent = $this->model->getCoursesByStudent($id);
+            
             if (is_null($studentOld)) {
                 header("location:" . Config::URL_BASE . "courses/editCourses");
             }
@@ -66,8 +77,12 @@ class StudentsController {
                     $student->setId($id);
                     $id = $this->model->updateStudent($student);
                     if ($id !== false) {
-                        echo "Se ha actualizado el estudiante";
-                        //header("location:" . Config::URL_BASE . "courses/editCourses");                 
+                        if($_POST["curso"]!="" ||  !in_array($coursesFromStudent,$_POST["curso"])){
+                            $ok=$this->model->setStudentInCourse($student->getId(), $_POST["curso"]);
+                            if ($ok !== false) 
+                            echo "Se ha actualizado el estudiante";
+                        }
+                                         
                     }
                 }
             } else {
@@ -87,12 +102,16 @@ class StudentsController {
             $errores = $e->getMessagesErrores();
             $view->errores = $errores;
         } finally {
+            $view->coursesFromStudent=$coursesFromStudent;
+            $view->courses=$courses;
             $view->urlBack = Config::URL_BASE . "students";
             $view->render('edit_student');
         }
     }
 
     function info(int $id) {
+        VerificarToken::comprobarAdmin();
+
         $view = new View();
         $student = $this->model->getStudent($id);
         $view->student = $student;
@@ -102,9 +121,7 @@ class StudentsController {
     }
 
     function delete(int $id) {
-        if (!($_SESSION["verified"] && $_SESSION["role"] === 'admin')) {
-            header("location:" . Config::URL_BASE);
-        }
+        VerificarToken::comprobarAdmin();
 
         if (!is_numeric($id)) {
             header("location: " . Config::URL_BASE . "courses/editCourses");
@@ -121,9 +138,8 @@ class StudentsController {
         }
     }
     function deletetotal(int $id) {
-        if (!($_SESSION["verified"] && $_SESSION["role"] === 'admin')) {
-            header("location:" . Config::URL_BASE);
-        }
+        VerificarToken::comprobarAdmin();
+
         if (!is_numeric($id)) {
             header("location: " . Config::URL_BASE . "courses/editCourses");
         }

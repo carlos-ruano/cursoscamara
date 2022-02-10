@@ -1,4 +1,5 @@
 <?php
+use Firebase\JWT\JWT;
 
 class LoginController {
     function __construct() {
@@ -15,10 +16,20 @@ class LoginController {
                 } else {
                     $ok = password_verify($_POST["password"], $usr->getPassword());
                     if ($ok) {
-                        $_SESSION["id"]=$usr->getId();
-                        $_SESSION["role"]=$usr->getRole();
                         $_SESSION["name"]=$usr->getName();
-                        $_SESSION["verified"]="true";
+                        $time = time();
+                        $token = array(
+                            'iat' => $time, // Tiempo que inició el token
+                            'exp' => $time + Config::AUTH_TIME, // Tiempo que expirará el token
+                            'data' => [ // información del usuario
+                                'id' => $usr->getId(),
+                                'username' => $usr->getName(),
+                                'role' => $usr->getRole()
+                            ]
+                        );
+                        $token = JWT::encode($token, Config::AUTH_KEY, Config::AUTH_ENCRYPT);
+                        $_SESSION["token"]=$token;
+
                         header("location:".Config::URL_BASE);
                     } else {
                         $vista->err_msg = "Contraseña o email incorrectos.";
@@ -36,9 +47,9 @@ class LoginController {
         }
     }
     function cerrar(){
-        if(isset($_SESSION["verified"])){
+        if(isset($_SESSION["token"])){
             session_destroy();
             header("location:".Config::URL_BASE);
-        }
+       }
     }
 }

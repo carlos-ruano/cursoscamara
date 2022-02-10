@@ -8,24 +8,28 @@ class CoursesController {
 
     function index() {
         $view = new View();
-        //$autenticado = isset($_SESSION["autenticado"]);
-        // if ($autenticado) {
-        //     $rol = $_SESSION["rol"];
-        //     $view->classEnlaces = $autenticado && $rol !== 'admin' ? 'ocultar' : '';
-        // } else {
-        //     $view->classEnlaces = 'ocultar';
-        // }
-        $courses = $this->model->getCourses();
-        $view->courses = $courses;
-        $view->urlReturn = Config::URL_BASE;
-        $view->urlEditCourses = Config::URL_BASE . "courses/editCourses";
-        $view->render('courses');
+        try {
+            $courses = $this->model->getCourses();
+            $coursesOK = [];
+            foreach ($courses as $course) {
+                if ($course->getStatus() === "disponible") {
+                    $coursesOK[] = $course;
+                }
+            }
+        } catch (CourseValidatorException $e) {
+            $errores = $e->getMessagesErrores();
+            $view->errores = $errores;
+        } finally {
+            $view->courses = $coursesOK;
+            $view->urlReturn = Config::URL_BASE;
+            $view->urlEditCourses = Config::URL_BASE . "courses/editCourses";
+            $view->render('courses');
+        }
     }
 
     function new() {
-        if (!($_SESSION["verified"] && $_SESSION["role"] === 'admin')) {
-            header("location:" . Config::URL_BASE);
-        }
+        VerificarToken::comprobarAdmin();
+
         $view = new View();
         try {
             if (isset($_POST["enviar"])) {
@@ -75,23 +79,25 @@ class CoursesController {
     }
 
     function editCourses() {
-        if (!($_SESSION["verified"] && $_SESSION["role"] === 'admin')) {
-            header("location:" . Config::URL_BASE);
-        }
+        VerificarToken::comprobarAdmin();
         $view = new View();
-        $courses = $this->model->getCourses();
-        $view->courses = $courses;
-        $view->urlReturn = Config::URL_BASE;
-        $view->url_newCourse = Config::URL_BASE . "courses/new";
-        $view->render('editCourses');
+        try {
+            $courses = $this->model->getCourses();
+        } catch (CourseValidatorException $e) {
+            $errores = $e->getMessagesErrores();
+            $view->errores = $errores;
+            header("location: " . Config::URL_BASE);
+        } finally {
+            $view->courses = $courses;
+            $view->urlReturn = Config::URL_BASE;
+            $view->url_newCourse = Config::URL_BASE . "courses/new";
+            $view->render('editCourses');
+        }
     }
 
 
     function edit(int $id) {
-        if (!($_SESSION["verified"] && $_SESSION["role"] === 'admin')) {
-            header("location:" . Config::URL_BASE);
-        }
-
+        VerificarToken::comprobarAdmin();
         if (!is_numeric($id)) {
             header("location: " . Config::URL_BASE . "courses/editCourses");
         }
@@ -100,7 +106,7 @@ class CoursesController {
         try {
             $courseOld = $this->model->getCourse($id);
             if (is_null($courseOld)) {
-                header("location:" . Config::URL_BASE . "courses/editCourses");
+                header("location:" . Config::URL_BASE);
             }
             if (isset($_POST["enviar"])) {
                 //var_dump($_POST);
@@ -176,7 +182,7 @@ class CoursesController {
             $view->image = Config::PATH_IMG . $courseOld->getImage_link();
             $view->errores = $errores;
         } finally {
-            $view->url_delete = Config::URL_BASE.'courses/delete/'.$courseOld->getId();
+            $view->url_delete = Config::URL_BASE . 'courses/delete/' . $courseOld->getId();
             $view->urlBack = Config::URL_BASE . "courses/editCourses";
             $view->render('edit_course');
         }
@@ -184,59 +190,27 @@ class CoursesController {
 
     function info(int $id) {
         $view = new View();
-        $course = $this->model->getCourse($id);
-        $view->course = $course;
-        $view->urlReturn = Config::URL_BASE;
-        $view->urlCourseInfo = Config::URL_BASE . "courses/info/" . $id;
-        $view->render('info');
-    }
-
-    function listado(int $id) {
-        if (!($_SESSION["verified"] && $_SESSION["role"] === 'admin')) {
-            header("location:" . Config::URL_BASE);
-        }
-        $view = new View();
-        $course = $this->model->getCourse($id);
-        $students = $this->students_model->getStudentsByCourse($id);
-        $view->students = $students;
-        $view->course = $course;
-        $view->urlReturn = Config::URL_BASE."courses/editCourses";
-        $view->urlCourseInfo = Config::URL_BASE . "courses/info/" . $id;
-        $view->render('listado_by_course');
-    }
-    function add_alumno(int $course_id){
-        if (!($_SESSION["verified"] && $_SESSION["role"] === 'admin')) {
-            header("location:" . Config::URL_BASE);
-        }
-        $view = new View();
         try {
-            if (isset($_POST["enviar"])) {
-                $validate = new StudentValidator($_POST);
-
-                if ($validate->isOk()) {
-                    $student = new Student($_POST);
-                    $student_id = $this->students_model->createStudent($student);
-                    if ($student_id !== false) {
-                        $this->students_model->setStudentInCourse($student_id,$course_id);
-                        header("location:" . Config::URL_BASE . "courses/listado/".$course_id);
-                    }
-                    $_POST = [];
-                }
+            $course = $this->model->getCourse($id);
+            if (is_null($course)) {
+                header("location:" . Config::URL_BASE);
             }
-        } catch (StudentValidatorException $e) {
+            if ($course->getStatus() != "disponible") {
+                VerificarToken::comprobarAdmin();
+            }
+        } catch (CourseValidatorException $e) {
             $errores = $e->getMessagesErrores();
             $view->errores = $errores;
         } finally {
-            $view->urlBack = Config::URL_BASE . "students";
-            $view->render('newstudent');
+            $view->course = $course;
+            $view->urlReturn = Config::URL_BASE;
+            $view->urlCourseInfo = Config::URL_BASE . "courses/info/" . $id;
+            $view->render('info');
         }
     }
 
-
     function delete(int $id) {
-        if (!($_SESSION["verified"] && $_SESSION["role"] === 'admin')) {
-            header("location:" . Config::URL_BASE);
-        }
+        VerificarToken::comprobarAdmin();
 
         if (!is_numeric($id)) {
             header("location: " . Config::URL_BASE . "courses/editCourses");
@@ -253,9 +227,8 @@ class CoursesController {
         }
     }
     function deletetotal(int $id) {
-        if (!($_SESSION["verified"] && $_SESSION["role"] === 'admin')) {
-            header("location:" . Config::URL_BASE);
-        }
+        VerificarToken::comprobarAdmin();
+
         if (!is_numeric($id)) {
             header("location: " . Config::URL_BASE . "courses/editCourses");
         }

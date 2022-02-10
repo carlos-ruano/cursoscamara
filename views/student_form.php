@@ -57,7 +57,21 @@
                 <div class="dato"><textarea name="observations" id="observations" cols="30" rows="3"><?= $_POST['observations'] ?? "" ?></textarea></div>
                 <div class="error"><?= $this->errores['observations'] ?? "" ?></div>
             </div>
-        </div>      
+        </div>
+        <div class="celda">
+            <div class="tipoDato"><label for="select_cursos">Inscripción: </label></div>
+            <div class="divDato">
+                <div class="dato">
+                    <select name="curso" id="select_cursos" class="dato">
+                        <option value="">--- Seleccione un curso ---</option>
+                        <?php foreach ($this->courses as $course) { ?>
+                            <option value="<?= $course->getId() ?>" <?=in_array($course->getId(),$this->coursesFromStudent) ? "selected":"" ?>><?= $course->getName() ?></option>
+                        <?php }; ?>
+                    </select>
+                </div>
+            </div>
+        </div>
+
         <div class="celda">
             <div class="enviar"><input type="submit" name="enviar"></div>
         </div>
