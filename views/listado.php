@@ -24,7 +24,11 @@
                 <div class="listado_responsive2"><?= $student->getOrientation() ?? '' ?></div>
                 <div class="listado_responsive2"><?= $student->getObservations() ?? '' ?></div>
                 <div class="listado_opciones">
-                    <div><a href="<?= Config::URL_BASE.'students/delete/'.$student->getId()?>" class="delete"><i class="fas fa-trash-alt"></i></a></div>
+                    <div><a href="<?php if (isset($this->course)){
+                        echo  Config::URL_BASE.'students/deleteStudentFromCourse/'.$student->getId().'/'.$this->course->getId();
+                    }else{
+                        echo  Config::URL_BASE.'students/delete/'.$student->getId();
+                    }?>" class="delete"><i class="fas fa-trash-alt"></i></a></div>
                     <div><a href="<?= Config:: URL_BASE . 'students/edit/' . $student->getId() ?>" class="edit"><i class="fas fa-edit"></i></a></div>
                 </div>
             </div>

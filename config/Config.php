@@ -13,6 +13,10 @@ class Config {
     const MAX_255 = 255;
     const DNI_CH_MAX = 10;
     const TEL_CH_MAX = 15;
+    
+    const AUTH_KEY = 'jkhkjh6tughkhkj';
+    const AUTH_ENCRYPT = 'HS256';
+    const AUTH_TIME = 60 * 60 * 24;
 
     function __construct()
     {

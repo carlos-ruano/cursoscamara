@@ -7,5 +7,5 @@
     <br>
     <a href="<?= $this->urlReturn ?>" class="cancel">Volver</a>
     <?php include "listado.php";?>
-    <a href="<?= Config::URL_BASE."courses/add_alumno/".$this->course->getId()?>" class="addCourse"><i class="fas fa-plus"></i></a>
+    <a href="<?= Config::URL_BASE."students/new"?>" class="addCourse"><i class="fas fa-plus"></i></a>
 </div>

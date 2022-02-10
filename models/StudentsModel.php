@@ -18,6 +18,13 @@ class StudentsModel {
         }
         return $objs;
     }
+    function asocToArray(array $asocs) {
+        $num = [];
+        foreach ($asocs as $asoc) {
+            $num[] = $asoc["COURSE_ID"];
+        }
+        return $num;
+    }
 
     function getStudent($id) {
         $sql = "SELECT * FROM students WHERE id=?";
@@ -83,6 +90,15 @@ class StudentsModel {
         ];
         $students = $this->cnx->query($sql,$params);
         return $this->asocToArrayObj($students);
+    }
+
+    function getCoursesByStudent($student_id){
+        $sql= "SELECT `COURSE_ID` FROM `students_courses` WHERE `STUDENT_ID`=?;";
+        $params = [
+            $student_id
+        ];
+        
+        return $this->asocToArray($this->cnx->query($sql,$params));
     }
 
     function deleteStudentFromCourse($student_id,$course_id) {
