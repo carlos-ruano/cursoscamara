@@ -1,5 +1,5 @@
 # cursoscamara
-<!-- 
+
 Sitio web creado por: 
 - Carlos Domínguez-Rodiño Ruano
 - Pablo Bueno Duque
@@ -23,4 +23,4 @@ Si se quieren hacer pruebas en local:
 - Exportar el archivo `cursoscamara.sql`en la bbdd.
 - Descomentar el archivo ConfigDB y comentar lo que no está comentado.
 - En index.php llamar a Config-dev.php en vez de Config.php
-- Configurar el Config-dev según el software que se utilice. Nosotros hemos utilizado XAMPP. -->
+- Configurar el Config-dev según el software que se utilice. Nosotros hemos utilizado XAMPP.
